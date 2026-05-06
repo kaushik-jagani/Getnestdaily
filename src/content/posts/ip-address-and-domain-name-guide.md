@@ -3,7 +3,7 @@ id: "5"
 title: "The Complete Beginner's Guide to DNS: How IP Addresses and Domain Names Connect the Internet"
 category: "technology"
 date: "2026-04-21"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/ip-address-and-domain-name-guide/featured.jpg"
 featured: false
 reading_time: ""

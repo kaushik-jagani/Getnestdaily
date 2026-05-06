@@ -3,7 +3,7 @@ id: "meta-ai-age-detection-2026"
 title: "Meta's AI Can Now Read Your Bones: The Child Safety Move That Rewrites the Rules of Digital Sovereignty"
 category: "technology"
 date: "2026-05-05"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/meta-ai-age-detection-2026/featured.jpg"
 featured: true
 tags:

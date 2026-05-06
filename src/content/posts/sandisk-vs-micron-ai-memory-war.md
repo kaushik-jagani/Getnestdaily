@@ -3,7 +3,7 @@ id: "sandisk-vs-micron-ai-memory-war-2026"
 title: "SanDisk vs. Micron: The AI Memory War That Will Decide Who Controls the Next Internet"
 category: "technology"
 date: "2026-05-06"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/sandisk-vs-micron-ai-memory-war/featured.jpg"
 featured: true
 tags:

@@ -3,7 +3,7 @@ id: "8"
 title: "Is 2026 the Last Year for Manual Coding? Agent Skills, Micro LLMs & Developer Future"
 category: "technology"
 date: "2026-04-23"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/future-of-coding-2026-agent-skills-micro-llm-developers/featured.jpg"
 featured: false
 reading_time: ""

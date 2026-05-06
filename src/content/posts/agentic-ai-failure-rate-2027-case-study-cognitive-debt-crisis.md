@@ -3,7 +3,7 @@ id: "6"
 title: "Agentic AI Failure Rate 2027: Case Study on Cognitive Debt & Why 40% Projects May Collapse"
 category: "technology"
 date: "2026-04-23"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/agentic-ai-failure-rate-2027-case-study-cognitive-debt-crisis/featured.jpg"
 featured: false
 reading_time: ""

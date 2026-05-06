@@ -3,7 +3,7 @@ id: "9"
 title: "Microsoft Outlook Outage Explained: Why Users Are Experiencing Sign-In Issues"
 category: "technology"
 date: "2026-04-27"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/microsoft-outlook-outage-explained-sign-in-issues-2026/featured.jpg"
 featured: false
 reading_time: ""

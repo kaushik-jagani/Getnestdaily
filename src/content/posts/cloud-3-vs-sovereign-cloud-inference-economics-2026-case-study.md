@@ -3,7 +3,7 @@ id: "7"
 title: "Cloud 3.0 vs Sovereign Cloud: Real Cost Case Study & Inference Economics in 2026"
 category: "technology"
 date: "2026-04-23"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/cloud-3-vs-sovereign-cloud-inference-economics-2026-case-study/featured.jpg"
 featured: false
 reading_time: ""

@@ -3,7 +3,7 @@ id: "12"
 title: "Utah's Anti-VPN Law Is Now Live - And the Internet's Architecture Will Never Be the Same"
 category: "technology"
 date: "2026-05-04"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/utah-vpn-law-sb73-2026/featured.jpg"
 featured: true
 reading_time: "12 min"

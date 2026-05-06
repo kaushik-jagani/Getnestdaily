@@ -3,7 +3,7 @@ id: "10"
 title: "Steam Controller 2 Release Date, Price & Features: The Ultimate 2026 Guide"
 category: "gadgets"
 date: "2026-04-28"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/steam-controller-2-leaks-rumors-features-price-2026/featured.jpg"
 featured: false
 reading_time: ""
