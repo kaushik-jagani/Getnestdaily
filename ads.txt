@@ -5,7 +5,7 @@
 # Replace the pub-ID with your actual Google AdSense Publisher ID
 # This file helps verify your AdSense account and prevent ad fraud
 
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-8874762614879762, DIRECT, f08c47fec0942fa0
 
 # Add any additional ad networks as needed
 # Format: domain, publisher-id, relationship-type, certification-id
