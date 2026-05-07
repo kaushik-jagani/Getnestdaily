@@ -2,7 +2,7 @@
 title: "Google Chrome's Silent 4GB AI Takeover: What It Means for Your Privacy, Your Data, and the Future of Edge AI"
 category: "technology"
 date: "2026-05-06"
-author: "Global Info Nest Team"
+author: "Kaushik Jagani"
 image: "assets/images/posts/chrome-gemini-nano-silent-install/featured.png"
 featured: true
 tags:
@@ -29,6 +29,7 @@ keywords:
   - "on-device LLM browser"
   - "Cloud 3.0 sovereign AI"
 ---
+
 ## The Consent That Never Came: Why a 4GB File Is Bigger Than Your Hard Drive
 
 Data sovereignty doesn't fail with a headline. It fails silently, in a folder you'll never check, on a Tuesday afternoon when your browser decides your machine is a deployment surface.
