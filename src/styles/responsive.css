@@ -2,6 +2,15 @@
     RESPONSIVE - TrendBriefly
    ============================================ */
 
+/* ---- Global overflow prevention ---- */
+/* Prevent any element from triggering horizontal scroll */
+html, body { max-width: 100%; width: 100%; }
+.main-layout, .blog-feed-layout, .post-content,
+.footer, .hero-section, .trending-section, .newsletter-section { overflow-wrap: break-word; word-break: break-word; }
+/* Fix flex/grid children overflow: min-width:auto can prevent shrinking */
+.main-layout > *, .blog-feed-layout > *, .news-card-horizontal > *,
+.blog-feed-card > *, .footer-content > * { min-width: 0; }
+
 /* ---- Mobile (up to 768px) ---- */
 @media screen and (max-width: 768px) {
     :root {
@@ -152,9 +161,9 @@
     .trending-grid { grid-template-columns: repeat(2, 1fr); }
 
     .posts-grid { grid-template-columns: repeat(2, 1fr); }
-    .main-layout { grid-template-columns: 1fr 240px; gap: var(--space-5); }
-    .blog-feed-layout { grid-template-columns: 1fr 280px; gap: var(--space-6); }
-    .blog-feed-card-image { width: 180px; }
+    .main-layout { grid-template-columns: 1fr minmax(0, 240px); gap: var(--space-5); }
+    .blog-feed-layout { grid-template-columns: 1fr minmax(0, 280px); gap: var(--space-6); }
+    .blog-feed-card-image { width: 180px; max-width: 100%; }
     .footer-content { grid-template-columns: repeat(2, 1fr); }
     .contact-wrapper { grid-template-columns: 1fr 1fr; }
 }

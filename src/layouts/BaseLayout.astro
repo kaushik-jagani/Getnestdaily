@@ -29,9 +29,8 @@ const resolvedOgImage = ogImage ? new URL(ogImage, siteUrl).href : defaultOgImag
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Critical: preconnect to third-party origins -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+    <!-- DNS prefetch for deferred third-party origins -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
     <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
 
@@ -79,25 +78,28 @@ const resolvedOgImage = ogImage ? new URL(ogImage, siteUrl).href : defaultOgImag
     <link rel="apple-touch-icon" href="/favicon.svg">
     <meta name="theme-color" content="#2563eb">
 
-    <!-- Google Analytics (deferred — not render-blocking) -->
+    <!-- Google Analytics + AdSense: deferred to reduce TBT -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-EQCRHDEN5M', { send_page_view: true, anonymize_ip: true });
-      (function() {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EQCRHDEN5M';
-        s.async = true;
-        document.head.appendChild(s);
-      })();
-    </script>
-
-    <!-- Google AdSense -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8874762614879762"
-      crossorigin="anonymous">
+      function loadDeferredScripts() {
+        var ga = document.createElement('script');
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-EQCRHDEN5M';
+        ga.async = true;
+        document.head.appendChild(ga);
+        var ads = document.createElement('script');
+        ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8874762614879762';
+        ads.async = true;
+        ads.crossOrigin = 'anonymous';
+        document.head.appendChild(ads);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadDeferredScripts);
+      } else {
+        setTimeout(loadDeferredScripts, 2000);
+      }
     </script>
 
     <slot name="head" />

@@ -1,4 +1,50 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import authorsData from '../data/authors.json';
+
+// ============================================
+// Author Types & Helpers
+// ============================================
+
+export interface Author {
+  id: number;
+  name: string;
+  slug: string;
+  bio: string;
+  avatar: string;
+  social: {
+    facebook: string;
+    instagram: string;
+    reddit: string;
+    linkedin: string;
+  };
+}
+
+const authors: Author[] = authorsData as Author[];
+
+export function getAllAuthors(): Author[] {
+  return authors;
+}
+
+export function getAuthorBySlug(slug: string): Author | undefined {
+  return authors.find(a => a.slug === slug);
+}
+
+export function findAuthorByName(name: string): Author | undefined {
+  return authors.find(a => a.name.toLowerCase() === name.toLowerCase());
+}
+
+export function getAuthorUrl(author: Author): string {
+  return `/author/${author.slug}/`;
+}
+
+export function getAuthorLink(authorName: string): string | null {
+  const author = findAuthorByName(authorName);
+  return author ? getAuthorUrl(author) : null;
+}
+
+// ============================================
+// Post Types & Helpers
+// ============================================
 
 export interface Post {
   id: string;
@@ -176,7 +222,24 @@ export function postUrl(slug: string): string {
 
 export function resolveImageUrl(image: string): string {
   if (!image) return '';
-  if (image.startsWith('http://') || image.startsWith('https://')) return image;
+  if (image.startsWith('http://') || image.startsWith('https://')) {
+    try {
+      const url = new URL(image);
+      if (url.hostname === 'images.pexels.com' && !url.searchParams.has('w')) {
+        url.searchParams.set('auto', 'compress');
+        url.searchParams.set('cs', 'tinysrgb');
+        url.searchParams.set('w', '800');
+        return url.toString();
+      }
+      if (url.hostname === 'images.unsplash.com' && !url.searchParams.has('w')) {
+        url.searchParams.set('w', '800');
+        url.searchParams.set('q', '75');
+        url.searchParams.set('auto', 'format');
+        return url.toString();
+      }
+    } catch { /* invalid URL, return as-is */ }
+    return image;
+  }
   if (image.startsWith('/')) return image;
   return '/' + image;
 }

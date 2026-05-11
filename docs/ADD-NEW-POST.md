@@ -21,7 +21,7 @@ The slug is the filename without `.md`. It becomes the URL:
 title: "Full SEO-Optimized Title (50–65 characters ideal)"
 category: "technology"
 date: "YYYY-MM-DD"
-author: "Author Name"
+author: "Kaushik Jagani"
 image: "assets/images/posts/{slug}/featured.jpg"
 featured: false
 reading_time: "7 min"

@@ -408,3 +408,28 @@ node -e "JSON.parse(require('fs').readFileSync('data/posts.json','utf8')); conso
 # Start local server (VS Code Live Server)
 # Right-click index.html â†’ Open with Live Server
 ```
+
+
+---
+
+## Responsive / Horizontal Scroll Audit (May 2026)
+
+### Issues Found & Fixed
+
+| # | Issue | File(s) | Fix Applied |
+|---|-------|---------|-------------|
+| 1 | `html` missing `overflow-x: hidden` — iOS Safari ignores it on `body` alone | `style.css` | Added `overflow-x: hidden` to `html` element |
+| 2 | Long URLs/words in post content cause horizontal overflow | `style.css` | Added `overflow-wrap: break-word; word-break: break-word` to `.post-content` |
+| 3 | Headings with long text overflow on mobile | `style.css` | Added `overflow-wrap: break-word; word-break: break-word` to all `h1–h6` |
+| 4 | Paragraphs with long unbroken text cause overflow | `style.css` | Added `overflow-wrap: break-word; word-break: break-word` to `p` elements |
+| 5 | `.news-card-image-wrapper` fixed 240px overflows small screens | `style.css` | Added `max-width: 100%` |
+| 6 | `.blog-feed-card-image` fixed 240px overflows small screens | `style.css` | Added `max-width: 100%` |
+| 7 | `.main-layout` fixed 300px sidebar can overflow narrow viewports | `style.css` | Changed to `minmax(0, 300px)` + `overflow: hidden` |
+| 8 | `.blog-feed-layout` fixed 340px sidebar can overflow narrow viewports | `style.css` | Changed to `minmax(0, 340px)` + `overflow: hidden` |
+| 9 | Tablet grid sidebars (240px/280px) cause squeeze on 769px screens | `responsive.css` | Changed to `minmax(0, 240px)` / `minmax(0, 280px)` |
+| 10 | Flex/grid children can't shrink below content (`min-width: auto`) | `responsive.css` | Added `min-width: 0` to all grid/flex children |
+| 11 | Missing global overflow containment | `responsive.css` | Added `max-width: 100%; width: 100%` to `html, body` |
+
+### CSS Files Modified
+- `src/styles/style.css` — overflow-wrap on typography, max-width on fixed-width elements, minmax on grid columns
+- `src/styles/responsive.css` — global overflow prevention rules, min-width: 0 for flex/grid children, tablet grid fixes

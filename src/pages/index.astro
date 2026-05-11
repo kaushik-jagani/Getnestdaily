@@ -1,87 +1,168 @@
 ﻿---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroMainCard from '../components/cards/HeroMainCard.astro';
-import HeroSideCard from '../components/cards/HeroSideCard.astro';
-import HorizontalNewsCard from '../components/cards/HorizontalNewsCard.astro';
-import SidebarNewsCard from '../components/cards/SidebarNewsCard.astro';
-import TrendingCard from '../components/cards/TrendingCard.astro';
-import Newsletter from '../components/Newsletter.astro';
-import { getAllPosts, getAllCategories, capitalizeWords, categoryUrl, postMatchesCategory, getCategoryPostCount } from '../lib/posts';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroMainCard from "../components/cards/HeroMainCard.astro";
+import HeroSideCard from "../components/cards/HeroSideCard.astro";
+import HorizontalNewsCard from "../components/cards/HorizontalNewsCard.astro";
+import SidebarNewsCard from "../components/cards/SidebarNewsCard.astro";
+import TrendingCard from "../components/cards/TrendingCard.astro";
+import Newsletter from "../components/Newsletter.astro";
+import {
+    getAllPosts,
+    getAllCategories,
+    capitalizeWords,
+    categoryUrl,
+    postMatchesCategory,
+    getCategoryPostCount,
+} from "../lib/posts";
 
 const posts = await getAllPosts();
 const categories = await getAllCategories();
-const categoryCounts = await Promise.all(categories.map(c => getCategoryPostCount(c)));
+const categoryCounts = await Promise.all(
+    categories.map((c) => getCategoryPostCount(c)),
+);
 
-// Hero: first 4 posts
-const heroCount = Math.min(4, posts.length);
-const heroMain = posts[0];
-const heroSide = posts.slice(1, 4);
+/**
+ * HOME PAGE POST DISTRIBUTION — UNIQUE POST LOGIC
+ *
+ * Sections (in display order):
+ *   1. Hero        — 1 main + up to 3 side cards  (4 posts)
+ *   2. Main feed   — up to 15 horizontal cards     (15 posts)
+ *   3. Sidebar     — up to 6 popular cards          (6 posts)
+ *   4. Trending    — up to 6 trending cards          (6 posts)
+ *
+ * Total unique slots = 4 + 15 + 6 + 6 = 31
+ *
+ * THRESHOLD RULE:
+ *   - If total posts >= the number of slots a section needs (cumulative),
+ *     each section gets UNIQUE posts — no duplicates across sections.
+ *   - If total posts < threshold, posts MAY repeat across sections
+ *     (fallback to simple slicing so sections aren't empty).
+ *
+ * Posts are always sorted by date (latest first) from getAllPosts().
+ */
 
-// Main feed: skip hero, take next 15
-const mainPosts = posts.slice(heroCount, heroCount + 15);
+const HERO_COUNT = 4;
+const MAIN_COUNT = 15;
+const SIDEBAR_COUNT = 6;
+const TRENDING_COUNT = 6;
 
-// Sidebar: top 6
-const sidebarPosts = posts.slice(0, 6);
+// Minimum posts needed for fully unique distribution across all sections
+const UNIQUE_THRESHOLD =
+    HERO_COUNT + MAIN_COUNT + SIDEBAR_COUNT + TRENDING_COUNT; // 31
 
-// Trending: featured posts not in hero, then fill
-const heroIds = new Set(posts.slice(0, heroCount).map(p => p.id));
-const featuredPosts = posts.filter(p => p.featured && !heroIds.has(p.id));
-const nonHeroPosts = posts.slice(heroCount);
-const trendingPool: typeof posts = [];
-const usedIds = new Set<string>();
-featuredPosts.forEach(p => {
-  if (trendingPool.length < 6 && !usedIds.has(p.id)) { trendingPool.push(p); usedIds.add(p.id); }
-});
-nonHeroPosts.forEach(p => {
-  if (trendingPool.length < 6 && !usedIds.has(p.id)) { trendingPool.push(p); usedIds.add(p.id); }
-});
+const hasEnoughForUnique = posts.length >= UNIQUE_THRESHOLD;
+
+// Track which post IDs are already assigned to a section
+const assignedIds = new Set<string>();
+
+/**
+ * Take up to `count` posts from the pool, skipping already-assigned IDs.
+ * When uniqueMode is true, each post is used only once across all sections.
+ * When false, allows re-use (for low post count scenarios).
+ */
+function takeUnique(
+    pool: typeof posts,
+    count: number,
+    uniqueMode: boolean,
+): typeof posts {
+    const result: typeof posts = [];
+    for (const p of pool) {
+        if (result.length >= count) break;
+        if (uniqueMode && assignedIds.has(p.id)) continue;
+        result.push(p);
+        if (uniqueMode) assignedIds.add(p.id);
+    }
+    return result;
+}
+
+// --- 1. Hero: latest 4 posts ---
+const heroPosts = takeUnique(posts, HERO_COUNT, hasEnoughForUnique);
+const heroMain = heroPosts[0] ?? null;
+const heroSide = heroPosts.slice(1);
+
+// --- 2. Main feed: next latest posts ---
+const mainPosts = takeUnique(posts, MAIN_COUNT, hasEnoughForUnique);
+
+// --- 3. Sidebar "Popular": next batch ---
+const sidebarPosts = takeUnique(posts, SIDEBAR_COUNT, hasEnoughForUnique);
+
+// --- 4. Trending: prefer featured posts, then fill with remaining ---
+const remainingPool = posts.filter((p) => !assignedIds.has(p.id));
+const featuredFirst = [
+    ...remainingPool.filter((p) => p.featured),
+    ...remainingPool.filter((p) => !p.featured),
+];
+const trendingPool = hasEnoughForUnique
+    ? takeUnique(featuredFirst, TRENDING_COUNT, true)
+    : takeUnique(
+          posts
+              .filter((p) => p.featured)
+              .concat(posts.filter((p) => !p.featured)),
+          TRENDING_COUNT,
+          false,
+      );
+
 const showTrending = posts.length >= 7;
 
 const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "TrendBriefly",
-  "url": "https://getnestdaily.xyz",
-  "description": "Independent coverage of AI developments, software engineering, technology news, and productivity tools for tech enthusiasts.",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://getnestdaily.xyz/pages/blog/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "TrendBriefly",
+    url: "https://getnestdaily.xyz",
+    description:
+        "Independent coverage of AI developments, software engineering, technology news, and productivity tools for tech enthusiasts.",
+    potentialAction: {
+        "@type": "SearchAction",
+        target: "https://getnestdaily.xyz/pages/blog/?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+    },
 };
 
 const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "TrendBriefly",
-  "url": "https://getnestdaily.xyz",
-  "logo": "https://getnestdaily.xyz/favicon.svg",
-  "description": "Independent coverage of software, artificial intelligence, and hardware — written for Tech Enthusiasts, Power Users, and Gamers who build and play.",
-  "sameAs": []
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "TrendBriefly",
+    url: "https://getnestdaily.xyz",
+    logo: "https://getnestdaily.xyz/favicon.svg",
+    description:
+        "Independent coverage of software, artificial intelligence, and hardware — written for Tech Enthusiasts, Power Users, and Gamers who build and play.",
+    sameAs: [],
 };
 ---
 
 <BaseLayout
-  title="TrendBriefly — AI News, Software Engineering & Tech Guides"
-  description="Independent coverage of AI developments, software engineering, technology news, and productivity tools. Expert guides and in-depth articles for tech enthusiasts and developers."
-  ogImage="/assets/images/og-default.jpg"
+    title="TrendBriefly — AI News, Software Engineering & Tech Guides"
+    description="Independent coverage of AI developments, software engineering, technology news, and productivity tools. Expert guides and in-depth articles for tech enthusiasts and developers."
+    ogImage="/assets/images/og-default.jpg"
 >
     <Fragment slot="head">
-        <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-        <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(websiteSchema)}
+        />
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(organizationSchema)}
+        />
     </Fragment>
 
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="sr-only">TrendBriefly — Latest AI &amp; Technology News</h1>
+            <h1 class="sr-only">
+                TrendBriefly — Latest AI &amp; Technology News
+            </h1>
             <div class="hero-grid">
                 {heroMain && <HeroMainCard post={heroMain} />}
-                {heroSide.length > 0 && (
-                    <div class="hero-side-cards">
-                        {heroSide.map(post => <HeroSideCard post={post} />)}
-                    </div>
-                )}
+                {
+                    heroSide.length > 0 && (
+                        <div class="hero-side-cards">
+                            {heroSide.map((post) => (
+                                <HeroSideCard post={post} />
+                            ))}
+                        </div>
+                    )
+                }
             </div>
         </div>
     </section>
@@ -93,9 +174,14 @@ const organizationSchema = {
             <div class="content-column">
                 <h2 class="section-heading">Latest News</h2>
                 <div id="mainNewsList">
-                    {mainPosts.map((post, index) => (
-                        <HorizontalNewsCard post={post} isFullWidth={index === 0 || index % 5 === 0} />
-                    ))}
+                    {
+                        mainPosts.map((post, index) => (
+                            <HorizontalNewsCard
+                                post={post}
+                                isFullWidth={index === 0 || index % 5 === 0}
+                            />
+                        ))
+                    }
                 </div>
             </div>
 
@@ -105,21 +191,26 @@ const organizationSchema = {
                 <div class="widget">
                     <h3>Popular</h3>
                     <div class="sidebar-news-list">
-                        {sidebarPosts.map(post => <SidebarNewsCard post={post} />)}
+                        {
+                            sidebarPosts.map((post) => (
+                                <SidebarNewsCard post={post} />
+                            ))
+                        }
                     </div>
                 </div>
 
                 <!-- Sidebar Ad -->
                 <div class="widget widget-ad">
                     <span class="ad-label">Advertisement</span>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-1234567890123456"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
+                    <ins
+                        class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-1234567890123456"
+                        data-ad-slot="1234567890"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
                     <script is:inline>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
+                        (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div>
 
@@ -127,12 +218,19 @@ const organizationSchema = {
                 <div class="widget">
                     <h3>Categories</h3>
                     <div class="sidebar-categories-list">
-                        {categories.map((category, index) => (
-                            <a href={categoryUrl(category)} class="sidebar-category-link">
-                                <span>{capitalizeWords(category)}</span>
-                                <span class="count">{categoryCounts[index]}</span>
-                            </a>
-                        ))}
+                        {
+                            categories.map((category, index) => (
+                                <a
+                                    href={categoryUrl(category)}
+                                    class="sidebar-category-link"
+                                >
+                                    <span>{capitalizeWords(category)}</span>
+                                    <span class="count">
+                                        {categoryCounts[index]}
+                                    </span>
+                                </a>
+                            ))
+                        }
                     </div>
                 </div>
             </aside>
@@ -140,29 +238,34 @@ const organizationSchema = {
     </section>
 
     <!-- Trending Section -->
-    {showTrending && (
-        <section class="trending-section">
-            <div class="container">
-                <h2 class="section-heading">Trending Now</h2>
-                <div class="trending-grid">
-                    {trendingPool.map(post => <TrendingCard post={post} />)}
+    {
+        showTrending && (
+            <section class="trending-section">
+                <div class="container">
+                    <h2 class="section-heading">Trending Now</h2>
+                    <div class="trending-grid">
+                        {trendingPool.map((post) => (
+                            <TrendingCard post={post} />
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
-    )}
+            </section>
+        )
+    }
 
     <!-- Newsletter -->
     <Newsletter />
 
     <script is:inline>
-      // News card click
-      document.querySelectorAll('.news-card-full, .news-card-horizontal').forEach(function(card) {
-        card.addEventListener('click', function(e) {
-          if (e.target.tagName.toLowerCase() === 'a') return;
-          var url = card.getAttribute('data-post-url');
-          if (url) window.location.href = url;
-        });
-      });
+        // News card click
+        document
+            .querySelectorAll(".news-card-full, .news-card-horizontal")
+            .forEach(function (card) {
+                card.addEventListener("click", function (e) {
+                    if (e.target.tagName.toLowerCase() === "a") return;
+                    var url = card.getAttribute("data-post-url");
+                    if (url) window.location.href = url;
+                });
+            });
     </script>
 </BaseLayout>
-
