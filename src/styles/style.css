@@ -1214,18 +1214,6 @@ li {
    ============================================ */
 
 
-.reading-progress {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: var(--accent);
-    z-index: var(--z-progress);
-    transition: width 60ms linear;
-    pointer-events: none;
-}
-
 .article-container {
     padding: var(--space-12) 0;
 }
@@ -2181,7 +2169,6 @@ li {
 
     .navbar,
     .newsletter-section,
-    .reading-progress,
     .theme-toggle,
     .hamburger {
         display: none !important;

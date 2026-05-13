@@ -199,6 +199,5 @@ html, body { max-width: 100%; width: 100%; }
 @media screen and (max-height: 500px) and (orientation: landscape) {
     .hero-section { padding: var(--space-4) 0; }
     .navbar .nav-container { height: 52px; }
-    .reading-progress { top: 52px; }
     .category-nav { top: 52px; }
 }

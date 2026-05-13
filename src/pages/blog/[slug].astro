@@ -122,9 +122,6 @@ const breadcrumbSchema = {
         />
     </Fragment>
 
-    <!-- Reading Progress -->
-    <div class="reading-progress" id="readingProgress"></div>
-
     <!-- Article -->
     <article class="article-container">
         <div class="container">
@@ -246,27 +243,5 @@ const breadcrumbSchema = {
         )
     }
 
-    <!-- Reading Progress + Share Buttons scripts -->
-    <script is:inline>
-        // Reading progress bar
-        (function () {
-            var bar = document.getElementById("readingProgress");
-            if (!bar) return;
-            window.addEventListener(
-                "scroll",
-                function () {
-                    var docHeight =
-                        document.documentElement.scrollHeight -
-                        window.innerHeight;
-                    if (docHeight <= 0) return;
-                    var progress = Math.min(
-                        (window.scrollY / docHeight) * 100,
-                        100,
-                    );
-                    bar.style.width = progress + "%";
-                },
-                { passive: true },
-            );
-        })();
-    </script>
+    <!-- Share Buttons scripts -->
 </BaseLayout>
