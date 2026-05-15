@@ -1,9 +1,9 @@
-# Adding a New Blog Post — Agent Instructions
+# Adding a New Blog Post ï¿½ Agent Instructions
 
 > **This file is the SINGLE SOURCE OF TRUTH for creating posts.**
 > AI agents and human authors MUST follow these rules exactly.
 
-> ### ?? PERMANENT LOCK — Google Analytics ID
+> ### ?? PERMANENT LOCK ï¿½ Google Analytics ID
 > **`G-8H8J4V3ZWY` in `src/layouts/BaseLayout.astro` must NEVER be changed by any agent or sync operation.** Only the site owner (Kaushik Jagani) can authorize changes.
 
 ---
@@ -17,11 +17,11 @@ The slug is the filename without `.md`. It becomes the URL:
 
 ---
 
-## Frontmatter Schema (REQUIRED — All Fields)
+## Frontmatter Schema (REQUIRED ï¿½ All Fields)
 
 ```yaml
 ---
-title: "Full SEO-Optimized Title (50–65 characters ideal)"
+title: "Full SEO-Optimized Title (50ï¿½65 characters ideal)"
 category: "technology"
 date: "YYYY-MM-DD"
 author: "Kaushik Jagani"
@@ -32,7 +32,7 @@ tags:
   - "Tag One"
   - "Tag Two"
   - "Tag Three"
-meta_description: "150–160 character SEO description with primary keyword near the start."
+meta_description: "150ï¿½160 character SEO description with primary keyword near the start."
 keywords:
   - "primary keyword"
   - "secondary keyword"
@@ -44,16 +44,16 @@ keywords:
 
 | Field | Type | Rules |
 |-------|------|-------|
-| `title` | string | 50–65 chars. Include primary keyword. No site name suffix. |
+| `title` | string | 50ï¿½65 chars. Include primary keyword. No site name suffix. |
 | `category` | string | **Must be one of the valid categories** (see below). Single value only. |
 | `date` | string | ISO format `YYYY-MM-DD`. Publication date. |
 | `author` | string | Use exact author names from the authors list below. |
 | `image` | string | **Relative path from project root** (see Image Rules below). |
-| `featured` | boolean | `true` only for high-quality cornerstone content (max 3–4 at a time). |
+| `featured` | boolean | `true` only for high-quality cornerstone content (max 3ï¿½4 at a time). |
 | `reading_time` | string | Format: `"X min"`. Calculate: word_count / 200, round up. |
-| `tags` | string[] | 3–8 tags. Title Case. Specific, not generic. |
-| `meta_description` | string | 150–160 chars. Includes primary keyword. Compelling for click-through. |
-| `keywords` | string[] | 5–10 keywords/phrases for SEO. Include long-tail variations. |
+| `tags` | string[] | 3ï¿½8 tags. Title Case. Specific, not generic. |
+| `meta_description` | string | 150ï¿½160 chars. Includes primary keyword. Compelling for click-through. |
+| `keywords` | string[] | 5ï¿½10 keywords/phrases for SEO. Include long-tail variations. |
 
 ---
 
@@ -87,28 +87,28 @@ These are the ONLY allowed category values:
 
 ---
 
-## Image Rules — CRITICAL
+## Image Rules ï¿½ CRITICAL
 
 ### Image Path Format
 
 The `image` field supports TWO formats:
 
 ```yaml
-# ? CORRECT — relative path for self-hosted images (no leading slash)
+# ? CORRECT ï¿½ relative path for self-hosted images (no leading slash)
 image: "assets/images/posts/my-post-slug/featured.jpg"
 
-# ? CORRECT — full URL for external/CDN images
+# ? CORRECT ï¿½ full URL for external/CDN images
 image: "https://images.unsplash.com/photo-123..."
 image: "https://cdn.example.com/posts/my-image.jpg"
 
-# ? WRONG — leading slash (breaks OG image URL resolution)
+# ? WRONG ï¿½ leading slash (breaks OG image URL resolution)
 image: "/assets/images/posts/my-post-slug/featured.jpg"
 ```
 
 **How it works:**
 - Relative path (`assets/...`) ? the system prepends `/` for display and full domain for OG meta
 - Full URL (`https://...`) ? used as-is everywhere
-- Leading slash (`/assets/...`) ? **AVOID** — causes double-slash issues in OG meta tags
+- Leading slash (`/assets/...`) ? **AVOID** ï¿½ causes double-slash issues in OG meta tags
 
 ### Image File Location
 
@@ -117,8 +117,8 @@ Images go in: `public/assets/images/posts/{slug}/`
 Standard structure:
 ```
 public/assets/images/posts/{slug}/
-  +-- featured.jpg       (required — hero/card image, 1200×630px)
-  +-- {other-name}.jpg   (optional — in-article images)
+  +-- featured.jpg       (required ï¿½ hero/card image, 1200ï¿½630px)
+  +-- {other-name}.jpg   (optional ï¿½ in-article images)
 ```
 
 ### In-Article Images
@@ -132,14 +132,14 @@ When using images inside post content, use the SAME relative format:
   <figcaption>Caption describing the image.</figcaption>
 </figure>
 
-<!-- ? WRONG — no external hotlinks -->
+<!-- ? WRONG ï¿½ no external hotlinks -->
 <img src="https://external-site.com/image.jpg">
 ```
 
 ### Image Requirements
 
 - Format: `.jpg` or `.webp` (prefer `.jpg` for compatibility)
-- Featured image: 1200×630px (OG/social card ratio)
+- Featured image: 1200ï¿½630px (OG/social card ratio)
 - Max file size: 200KB (compress before adding)
 - Always include descriptive `alt` text for accessibility/SEO
 - Always add `loading="lazy"` for non-hero images
@@ -151,7 +151,7 @@ When using images inside post content, use the SAME relative format:
 Write content in HTML (not raw Markdown) inside the `.md` file:
 
 ```html
-<p>Opening paragraph — hook the reader. Include primary keyword naturally.</p>
+<p>Opening paragraph ï¿½ hook the reader. Include primary keyword naturally.</p>
 
 <h2>First Section Heading</h2>
 <p>Content...</p>
@@ -168,10 +168,10 @@ Write content in HTML (not raw Markdown) inside the `.md` file:
 | Rule | Details |
 |------|---------|
 | Headings | Use `<h2>` for main sections, `<h3>` for subsections. Never use `<h1>` (page has one already). |
-| Length | Minimum 1000 words, ideal 1500–2500 words. |
-| Structure | 5–10 `<h2>` sections minimum for proper TOC generation. |
+| Length | Minimum 1000 words, ideal 1500ï¿½2500 words. |
+| Structure | 5ï¿½10 `<h2>` sections minimum for proper TOC generation. |
 | Links | Internal links to related posts: `<a href="/blog/{slug}/">text</a>` (include trailing slash). |
-| HTML entities | Use `&mdash;` `&rsquo;` `&ldquo;` `&rdquo;` — NOT raw unicode special chars. |
+| HTML entities | Use `&mdash;` `&rsquo;` `&ldquo;` `&rdquo;` ï¿½ NOT raw unicode special chars. |
 | No scripts | Never include `<script>` tags in post content. |
 | Paragraphs | Every paragraph in `<p>` tags. No naked text. |
 
@@ -193,7 +193,7 @@ File: `src/content/posts/example-ai-tool-review.md`
 
 ```yaml
 ---
-title: "Example AI Tool Review 2026 — Features, Pricing, and Alternatives"
+title: "Example AI Tool Review 2026 ï¿½ Features, Pricing, and Alternatives"
 category: "artificial-intelligence"
 date: "2026-05-05"
 author: "Kaushik Jagani"
@@ -233,17 +233,17 @@ After push, Cloudflare Pages auto-builds. No manual steps needed.
 
 ---
 
-## Common Agent Mistakes — AVOID THESE
+## Common Agent Mistakes ï¿½ AVOID THESE
 
 | Mistake | Fix |
 |---------|-----|
-| Leading `/` in image path | Use relative `assets/...` or full `https://...` URL — never `/assets/...` |
+| Leading `/` in image path | Use relative `assets/...` or full `https://...` URL ï¿½ never `/assets/...` |
 | Inventing new categories | Only use categories from the valid list above |
-| Title too short or generic | 50–65 chars with primary keyword |
-| Empty `meta_description` | Always write 150–160 chars |
-| Empty `keywords` array | Always include 5–10 keywords |
+| Title too short or generic | 50ï¿½65 chars with primary keyword |
+| Empty `meta_description` | Always write 150ï¿½160 chars |
+| Empty `keywords` array | Always include 5ï¿½10 keywords |
 | Empty `reading_time` | Calculate from word count |
-| Using `<h1>` in content | Only `<h2>` and `<h3>` — the page template adds `<h1>` |
+| Using `<h1>` in content | Only `<h2>` and `<h3>` ï¿½ the page template adds `<h1>` |
 | No internal links | Include 2+ links to other posts on the site |
 | Raw unicode emojis/special chars | Use HTML entities instead |
-| `featured: true` on every post | Reserve for 3–4 cornerstone articles |
+| `featured: true` on every post | Reserve for 3ï¿½4 cornerstone articles |

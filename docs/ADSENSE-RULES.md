@@ -1,10 +1,10 @@
-# Google AdSense Compliance Rules — TrendBriefly
+# Google AdSense Compliance Rules ï¿½ TrendBriefly
 
 > **This is the single source of truth for AdSense compliance.**
 > Every AI agent and human contributor MUST follow these rules when creating, editing, or reviewing blog content.
 > Violations can result in ad serving disabled, account suspension, or permanent ban.
 
-> ### ?? PERMANENT LOCK — Google Analytics ID
+> ### ?? PERMANENT LOCK ï¿½ Google Analytics ID
 > **`G-8H8J4V3ZWY` in `src/layouts/BaseLayout.astro` must NEVER be changed.** No agent or automated process may modify it without explicit owner permission.
 
 ---
@@ -29,7 +29,7 @@ Content must NEVER contain any of the following:
 - Extortion or blackmail content
 
 ### 1.4 Child Safety
-- ANY content that sexually exploits or endangers children — ZERO TOLERANCE
+- ANY content that sexually exploits or endangers children ï¿½ ZERO TOLERANCE
 - Child grooming, sextortion, sexualization of minors, child trafficking
 
 ### 1.5 Animal Cruelty
@@ -57,7 +57,7 @@ Content must NEVER contain any of the following:
 
 ---
 
-## 2. RESTRICTED CONTENT (Reduced Ad Revenue — Avoid If Possible)
+## 2. RESTRICTED CONTENT (Reduced Ad Revenue ï¿½ Avoid If Possible)
 
 This content will receive FEWER or NO ads:
 
@@ -91,7 +91,7 @@ This content will receive FEWER or NO ads:
 ## 3. CONTENT QUALITY REQUIREMENTS
 
 ### 3.1 Original Content
-- All content MUST be original — no copied/scraped/replicated content from other sites
+- All content MUST be original ï¿½ no copied/scraped/replicated content from other sites
 - If referencing other sources, add substantial commentary, analysis, or curation
 - AI-generated content must be reviewed, edited, and add genuine value
 
@@ -170,8 +170,8 @@ This content will receive FEWER or NO ads:
 **Every new blog post MUST pass ALL of these checks before publishing:**
 
 ### Content Checks
-- [ ] No prohibited content (Section 1) — illegal, sexual, violent, hateful, dangerous
-- [ ] No restricted content (Section 2) — or accept reduced ad revenue
+- [ ] No prohibited content (Section 1) ï¿½ illegal, sexual, violent, hateful, dangerous
+- [ ] No restricted content (Section 2) ï¿½ or accept reduced ad revenue
 - [ ] Content is 100% original (not copied/scraped from other sources)
 - [ ] No copyrighted material used without proper attribution/permission
 - [ ] No misleading claims, fake endorsements, or "Get Rich Quick" promises
@@ -226,10 +226,10 @@ These topics require extra caution to stay compliant:
 
 ## 8. WHAT TO DO IF UNSURE
 
-1. **When in doubt, DON'T publish** — review against this checklist again
-2. **Check Google's official policies** — https://support.google.com/adsense/answer/9335564
-3. **Err on the side of caution** — it's easier to publish later than to recover a banned account
-4. **Content audit** — regularly review existing posts for compliance
+1. **When in doubt, DON'T publish** ï¿½ review against this checklist again
+2. **Check Google's official policies** ï¿½ https://support.google.com/adsense/answer/9335564
+3. **Err on the side of caution** ï¿½ it's easier to publish later than to recover a banned account
+4. **Content audit** ï¿½ regularly review existing posts for compliance
 
 ---
 
