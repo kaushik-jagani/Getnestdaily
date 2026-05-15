@@ -4,7 +4,7 @@
 > This document describes the full architecture, conventions, and step-by-step procedures for every common task.
 
 > ### 🚨 PERMANENT LOCK — Google Analytics ID
-> **The GA4 Measurement ID `G-EQCRHDEN5M` in `src/layouts/BaseLayout.astro` is LOCKED.**
+> **The GA4 Measurement ID `G-8H8J4V3ZWY` in `src/layouts/BaseLayout.astro` is LOCKED.**
 > No agent, script, or sync operation may change it. Only the site owner (Kaushik Jagani) can authorize changes.
 
 ---

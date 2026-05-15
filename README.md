@@ -1,4 +1,4 @@
-﻿# TrendBriefly - A Modern, SEO-Optimized Blogging Platform
+# TrendBriefly - A Modern, SEO-Optimized Blogging Platform
 
 ![TrendBriefly](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -6,7 +6,7 @@
 
 A lightweight, production-ready blogging platform built with vanilla HTML, CSS, and JavaScript. TrendBriefly is designed for scalability, SEO optimization, and AdSense integration.
 
-## 🚀 Features
+## ?? Features
 
 ### Core Features
 - **Dynamic Blog System** - Posts managed via JSON with real-time rendering
@@ -29,40 +29,40 @@ A lightweight, production-ready blogging platform built with vanilla HTML, CSS, 
 - Manifest.json for app installation
 - robots.txt for SEO
 
-## 📁 Project Structure
+## ?? Project Structure
 
 ```
 project-root/
-├── assets/
-│   ├── images/          # Blog post images
-│   ├── icons/           # Favicon and icons
-│   └── fonts/           # Custom fonts
-├── css/
-│   ├── variables.css    # CSS variables and base styles
-│   ├── style.css        # General styles
-│   └── responsive.css   # Mobile responsive styles
-├── js/
-│   ├── main.js          # Main application logic
-│   ├── router.js        # Client-side routing
-│   └── analytics.js     # Google Analytics integration
-├── data/
-│   └── posts.json       # Blog posts database
-├── pages/
-│   ├── blog        # Blog listing page
-│   ├── post        # Single post page
-│   ├── category    # Category page
-│   ├── about       # About page
-│   └── contact     # Contact page
-├── index.html           # Homepage
-├── sitemap.xml          # SEO sitemap
-├── robots.txt           # Search engine rules
-├── ads.txt              # AdSense configuration
-├── manifest.json        # PWA manifest
-├── .gitignore           # Git ignore file
-└── README.md            # This file
++-- assets/
+�   +-- images/          # Blog post images
+�   +-- icons/           # Favicon and icons
+�   +-- fonts/           # Custom fonts
++-- css/
+�   +-- variables.css    # CSS variables and base styles
+�   +-- style.css        # General styles
+�   +-- responsive.css   # Mobile responsive styles
++-- js/
+�   +-- main.js          # Main application logic
+�   +-- router.js        # Client-side routing
+�   +-- analytics.js     # Google Analytics integration
++-- data/
+�   +-- posts.json       # Blog posts database
++-- pages/
+�   +-- blog        # Blog listing page
+�   +-- post        # Single post page
+�   +-- category    # Category page
+�   +-- about       # About page
+�   +-- contact     # Contact page
++-- index.html           # Homepage
++-- sitemap.xml          # SEO sitemap
++-- robots.txt           # Search engine rules
++-- ads.txt              # AdSense configuration
++-- manifest.json        # PWA manifest
++-- .gitignore           # Git ignore file
++-- README.md            # This file
 ```
 
-## 🚀 Getting Started
+## ?? Getting Started
 
 ### Installation
 
@@ -87,7 +87,7 @@ project-root/
    - Ensure all files are in the correct folders as shown above
    - Place blog post images in `/assets/images/`
 
-## 📝 Adding Blog Posts
+## ?? Adding Blog Posts
 
 Blog posts are managed in `/data/posts.json`. Each post requires:
 
@@ -128,7 +128,7 @@ Blog posts are managed in `/data/posts.json`. Each post requires:
 }
 ```
 
-## 🎨 Customization
+## ?? Customization
 
 ### Colors and Styling
 Edit `/css/variables.css` to customize colors, fonts, and spacing:
@@ -155,19 +155,19 @@ Update all HTML files (`index.html` and `/pages/*.html`) to customize:
 - Twitter cards
 - Site title
 
-## 📊 SEO Optimization
+## ?? SEO Optimization
 
 ### Already Configured:
-- ✅ Meta tags (title, description)
-- ✅ Open Graph tags
-- ✅ Twitter Card tags
-- ✅ JSON-LD structured data
-- ✅ sitemap.xml
-- ✅ robots.txt
-- ✅ Canonical URLs
-- ✅ Responsive design (mobile-friendly)
-- ✅ Fast loading times
-- ✅ Proper heading hierarchy
+- ? Meta tags (title, description)
+- ? Open Graph tags
+- ? Twitter Card tags
+- ? JSON-LD structured data
+- ? sitemap.xml
+- ? robots.txt
+- ? Canonical URLs
+- ? Responsive design (mobile-friendly)
+- ? Fast loading times
+- ? Proper heading hierarchy
 
 ### To Further Optimize:
 1. Replace `https://TrendBriefly.example.com` with your actual domain
@@ -176,7 +176,7 @@ Update all HTML files (`index.html` and `/pages/*.html`) to customize:
 4. Set up Google Analytics (see below)
 5. Implement Google AdSense (see below)
 
-## 💰 Google AdSense Integration
+## ?? Google AdSense Integration
 
 ### Setup:
 1. Sign up for Google AdSense at https://www.google.com/adsense
@@ -189,7 +189,7 @@ Update all HTML files (`index.html` and `/pages/*.html`) to customize:
    - In-content ad (250px height)
    - Sidebar ad (300px height)
 
-## 📈 Google Analytics Integration
+## ?? Google Analytics Integration
 
 ### Setup:
 1. Create a Google Analytics property at https://analytics.google.com
@@ -211,7 +211,7 @@ Update all HTML files (`index.html` and `/pages/*.html`) to customize:
 - Newsletter signups
 - Search queries
 
-## 🔐 Security
+## ?? Security
 
 ### Recommended Security Measures:
 1. Set up HTTPS on your hosting
@@ -221,7 +221,7 @@ Update all HTML files (`index.html` and `/pages/*.html`) to customize:
 5. Implement CSRF protection for forms
 6. Regular security updates
 
-## 🚀 Deployment
+## ?? Deployment
 
 ### Local Hosting:
 - Local development server (for testing)
@@ -254,7 +254,7 @@ git push origin main
 # Enable GitHub Pages in repository settings
 ```
 
-## 📱 Mobile Optimization
+## ?? Mobile Optimization
 
 The site is fully mobile responsive with:
 - Hamburger navigation menu
@@ -264,7 +264,7 @@ The site is fully mobile responsive with:
 - Lazy-loaded images
 - Fast loading times
 
-## ♿ Accessibility
+## ? Accessibility
 
 The site includes:
 - Semantic HTML
@@ -275,7 +275,7 @@ The site includes:
 - Alt text for images
 - Screen reader support
 
-## 🔧 Maintenance
+## ?? Maintenance
 
 ### Regular Tasks:
 1. **Update posts:** Add new content to `posts.json`
@@ -290,7 +290,7 @@ Users can clear cached posts data by opening browser DevTools and clearing local
 localStorage.removeItem('TrendBriefly-posts');
 ```
 
-## 📧 Contact Form Setup
+## ?? Contact Form Setup
 
 The contact form (`/pages/contact.html`) currently logs submissions to browser console. To send emails:
 
@@ -308,7 +308,7 @@ The contact form (`/pages/contact.html`) currently logs submissions to browser c
 1. Set up backend endpoint
 2. Update form submission in `/js/main.js`
 
-## 🤝 Contributing
+## ?? Contributing
 
 To contribute:
 1. Fork the repository
@@ -316,11 +316,11 @@ To contribute:
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
+## ?? License
 
 This project is licensed under the MIT License - see LICENSE file for details.
 
-## 🆘 Support
+## ?? Support
 
 For issues and questions:
 - Check documentation above
@@ -329,7 +329,7 @@ For issues and questions:
 - Verify file paths are correct
 - Ensure JSON syntax is valid
 
-## 🎯 Performance Tips
+## ?? Performance Tips
 
 - Use WebP images for faster loading
 - Minimize HTTP requests
@@ -338,7 +338,7 @@ For issues and questions:
 - Implement lazy loading (already done)
 - Minify CSS and JavaScript for production
 
-## 📊 Analytics Insights
+## ?? Analytics Insights
 
 Monitor these metrics:
 - **Bounce rate:** Low is better (< 50%)
@@ -347,7 +347,7 @@ Monitor these metrics:
 - **Conversion rate:** Goal completions
 - **Traffic sources:** Where visitors come from
 
-## 🚀 Future Enhancements
+## ?? Future Enhancements
 
 Potential features to add:
 - Comments system
@@ -361,7 +361,7 @@ Potential features to add:
 - Blog post scheduling
 - Analytics dashboard
 
-## 📞 Contact
+## ?? Contact
 
 For website issues or inquiries:
 - Email: contact@TrendBriefly.com
@@ -369,7 +369,7 @@ For website issues or inquiries:
 
 ---
 
-**Built with ❤️ for creators, developers, and entrepreneurs**
+**Built with ?? for creators, developers, and entrepreneurs**
 
 Last Updated: April 13, 2026
 Version: 1.0.0

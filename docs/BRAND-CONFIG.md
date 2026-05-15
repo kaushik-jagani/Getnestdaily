@@ -64,20 +64,20 @@
 
 | Service | ID / Value |
 |---------|-----------|
-| Google Analytics 4 | `G-EQCRHDEN5M` ⚠️ **LOCKED — DO NOT CHANGE** |
+| Google Analytics 4 | `G-8H8J4V3ZWY` ⚠️ **LOCKED — DO NOT CHANGE** |
 | Google AdSense | `ca-pub-1234567890123456` (placeholder — update when approved) |
 | Twitter/X Handle | `@trendbrieflyHQ` |
 
 > ### 🚨 STRICT RULE — Google Analytics ID is PERMANENTLY LOCKED
 >
-> **The GA4 Measurement ID `G-EQCRHDEN5M` must NEVER be changed by any agent, script, or sync operation.**
+> **The GA4 Measurement ID `G-8H8J4V3ZWY` must NEVER be changed by any agent, script, or sync operation.**
 >
 > - ❌ Do NOT replace it when syncing from another project
 > - ❌ Do NOT treat it as a placeholder or default value
 > - ❌ Do NOT modify the GA script block in `src/layouts/BaseLayout.astro` without explicit owner permission
 > - ✅ Only the site owner (Kaushik Jagani) can authorize any change to this ID
 >
-> **Any operation that would modify `G-EQCRHDEN5M` must be STOPPED and owner permission obtained first.**
+> **Any operation that would modify `G-8H8J4V3ZWY` must be STOPPED and owner permission obtained first.**
 
 ---
 

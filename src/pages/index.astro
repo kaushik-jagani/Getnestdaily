@@ -1,4 +1,4 @@
-ï»¿---
+---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroMainCard from "../components/cards/HeroMainCard.astro";
 import HeroSideCard from "../components/cards/HeroSideCard.astro";
@@ -22,19 +22,19 @@ const categoryCounts = await Promise.all(
 );
 
 /**
- * HOME PAGE POST DISTRIBUTION â€” UNIQUE POST LOGIC
+ * HOME PAGE POST DISTRIBUTION — UNIQUE POST LOGIC
  *
  * Sections (in display order):
- *   1. Hero        â€” 1 main + up to 3 side cards  (4 posts)
- *   2. Main feed   â€” up to 15 horizontal cards     (15 posts)
- *   3. Sidebar     â€” up to 6 popular cards          (6 posts)
- *   4. Trending    â€” up to 6 trending cards          (6 posts)
+ *   1. Hero        — 1 main + up to 3 side cards  (4 posts)
+ *   2. Main feed   — up to 15 horizontal cards     (15 posts)
+ *   3. Sidebar     — up to 6 popular cards          (6 posts)
+ *   4. Trending    — up to 6 trending cards          (6 posts)
  *
  * Total unique slots = 4 + 15 + 6 + 6 = 31
  *
  * THRESHOLD RULE:
  *   - If total posts >= the number of slots a section needs (cumulative),
- *     each section gets UNIQUE posts â€” no duplicates across sections.
+ *     each section gets UNIQUE posts — no duplicates across sections.
  *   - If total posts < threshold, posts MAY repeat across sections
  *     (fallback to simple slicing so sections aren't empty).
  *
@@ -125,13 +125,13 @@ const organizationSchema = {
     url: "https://getnestdaily.xyz",
     logo: "https://getnestdaily.xyz/favicon.svg",
     description:
-        "Independent coverage of software, artificial intelligence, and hardware â€” written for Tech Enthusiasts, Power Users, and Gamers who build and play.",
+        "Independent coverage of software, artificial intelligence, and hardware — written for Tech Enthusiasts, Power Users, and Gamers who build and play.",
     sameAs: [],
 };
 ---
 
 <BaseLayout
-    title="TrendBriefly â€” AI News, Software Engineering & Tech Guides"
+    title="TrendBriefly — AI News, Software Engineering & Tech Guides"
     description="Independent coverage of AI developments, software engineering, technology news, and productivity tools. Expert guides and in-depth articles for tech enthusiasts and developers."
     ogImage="/assets/images/og-default.jpg"
 >
@@ -150,7 +150,7 @@ const organizationSchema = {
     <section class="hero-section">
         <div class="container">
             <h1 class="sr-only">
-                TrendBriefly â€” Latest AI &amp; Technology News
+                TrendBriefly — Latest AI &amp; Technology News
             </h1>
             <div class="hero-grid">
                 {heroMain && <HeroMainCard post={heroMain} />}

@@ -4,7 +4,7 @@
 > Everything else (layout, components, utilities, styles) is reusable as-is.
 
 > ### 🚨 PERMANENT LOCK — Google Analytics ID
-> **`G-EQCRHDEN5M` in `src/layouts/BaseLayout.astro` must NEVER be changed by any agent or sync operation.**
+> **`G-8H8J4V3ZWY` in `src/layouts/BaseLayout.astro` must NEVER be changed by any agent or sync operation.**
 > Only the site owner (Kaushik Jagani) can authorize changes to this ID. When setting up a new site from this theme, replace it with the NEW site's own GA ID — but NEVER change it in THIS project (getnestdaily.xyz).
 
 ---
@@ -39,7 +39,7 @@ site: 'https://YOUR-DOMAIN.com',  // ← Change this
 
 | Line/Section | What to Change |
 |-------------|----------------|
-| Google Analytics ID | `G-EQCRHDEN5M` → your GA4 ID |
+| Google Analytics ID | `G-8H8J4V3ZWY` → your GA4 ID |
 | AdSense publisher ID | `ca-pub-1234567890123456` → your AdSense ID |
 | `siteName` constant | `'TrendBriefly'` → your brand |
 | `siteUrl` fallback | `'https://getnestdaily.xyz'` → your domain |

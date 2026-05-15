@@ -3,7 +3,7 @@
 ## Overview
 
 > ### 🚨 PERMANENT LOCK — Google Analytics ID
-> **`G-EQCRHDEN5M` in `src/layouts/BaseLayout.astro` must NEVER be changed.** No agent or automated process may modify it without explicit owner permission (Kaushik Jagani).
+> **`G-8H8J4V3ZWY` in `src/layouts/BaseLayout.astro` must NEVER be changed.** No agent or automated process may modify it without explicit owner permission (Kaushik Jagani).
 
 The `worker.js` file in the project root is a **Cloudflare Worker** script that handles HTTP-level redirects for `getnestdaily.xyz`. It must be deployed via the Cloudflare dashboard or CLI, **not** automatically bundled by Astro.
 
