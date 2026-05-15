@@ -3,6 +3,10 @@
 > **When you copy this theme for a different brand/niche, ONLY modify the items listed below.**
 > Everything else (layout, components, utilities, styles) is reusable as-is.
 
+> ### 🚨 PERMANENT LOCK — Google Analytics ID
+> **`G-EQCRHDEN5M` in `src/layouts/BaseLayout.astro` must NEVER be changed by any agent or sync operation.**
+> Only the site owner (Kaushik Jagani) can authorize changes to this ID. When setting up a new site from this theme, replace it with the NEW site's own GA ID — but NEVER change it in THIS project (getnestdaily.xyz).
+
 ---
 
 ## Quick Checklist for New Site Setup

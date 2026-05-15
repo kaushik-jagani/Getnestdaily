@@ -80,6 +80,15 @@ These values are DIFFERENT between projects. Always use the TARGET project's val
 | Categories | `docs/BRAND-CONFIG.md` → Categories table |
 | Authors | `docs/BRAND-CONFIG.md` → Authors table |
 | Analytics IDs | `docs/BRAND-CONFIG.md` → Analytics table |
+
+> ### 🚨 ABSOLUTE RULE — Google Analytics ID `G-EQCRHDEN5M` is PERMANENTLY LOCKED
+>
+> When syncing ANY feature from another project:
+> - ❌ **NEVER replace `G-EQCRHDEN5M`** with the source project's GA ID
+> - ❌ **NEVER copy the GA script block verbatim** from another project
+> - ❌ **NEVER modify `gtag('config', ...)` or the GA loader in `BaseLayout.astro`** without explicit owner permission
+> - ✅ If the feature being synced touches the GA script, apply ONLY the structural/pattern change and keep `G-EQCRHDEN5M` intact
+> - ✅ When in doubt, STOP and ask the owner (Kaushik Jagani) before proceeding
 | Meta descriptions | `docs/BRAND-CONFIG.md` → SEO Defaults |
 | Niche/topic keywords | `docs/BRAND-CONFIG.md` → Niche table |
 | Footer text | Target's `src/components/Footer.astro` |

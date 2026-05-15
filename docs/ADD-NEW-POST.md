@@ -3,6 +3,9 @@
 > **This file is the SINGLE SOURCE OF TRUTH for creating posts.**
 > AI agents and human authors MUST follow these rules exactly.
 
+> ### 🚨 PERMANENT LOCK — Google Analytics ID
+> **`G-EQCRHDEN5M` in `src/layouts/BaseLayout.astro` must NEVER be changed by any agent or sync operation.** Only the site owner (Kaushik Jagani) can authorize changes.
+
 ---
 
 ## File Location

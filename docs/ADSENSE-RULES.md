@@ -4,6 +4,9 @@
 > Every AI agent and human contributor MUST follow these rules when creating, editing, or reviewing blog content.
 > Violations can result in ad serving disabled, account suspension, or permanent ban.
 
+> ### 🚨 PERMANENT LOCK — Google Analytics ID
+> **`G-EQCRHDEN5M` in `src/layouts/BaseLayout.astro` must NEVER be changed.** No agent or automated process may modify it without explicit owner permission.
+
 ---
 
 ## 1. PROHIBITED CONTENT (Will Get Account BANNED)

@@ -26,6 +26,30 @@
 
 ---
 
+## 🚨 ABSOLUTE PROHIBITION — Google Analytics ID
+
+> **THIS RULE APPLIES TO ALL AGENTS, CODING ASSISTANTS, AI TOOLS, AND AUTOMATED SCRIPTS.**
+
+**The Google Analytics Measurement ID `G-EQCRHDEN5M` is PERMANENTLY LOCKED.**
+
+```
+GOOGLE ANALYTICS ID: G-EQCRHDEN5M
+STATUS: READ-ONLY — NEVER MODIFY
+```
+
+### Rules — No Exceptions
+
+- ❌ **NEVER change, replace, or remove `G-EQCRHDEN5M`** for any reason
+- ❌ **NEVER overwrite it when syncing from another project** — the source project's GA ID must NOT replace this one
+- ❌ **NEVER use it as a "template" or "placeholder"** and swap it with a different ID
+- ❌ **NEVER modify it even if the source project has a "newer" or "better" setup**
+- ❌ **NEVER modify the GA script block in `src/layouts/BaseLayout.astro`** without explicit written owner permission
+- ✅ **ONLY the site owner (Kaushik Jagani) can authorize changes to this ID**
+
+**If any sync, copy, or update operation would affect `G-EQCRHDEN5M`, STOP immediately and ask the owner.**
+
+---
+
 ## Critical Rules (Quick Reference)
 
 ### Image Paths

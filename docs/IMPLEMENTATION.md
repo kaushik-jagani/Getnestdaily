@@ -3,6 +3,10 @@
 > **READ THIS FIRST before making any changes to the project.**
 > This document describes the full architecture, conventions, and step-by-step procedures for every common task.
 
+> ### ðŸš¨ PERMANENT LOCK â€” Google Analytics ID
+> **The GA4 Measurement ID `G-EQCRHDEN5M` in `src/layouts/BaseLayout.astro` is LOCKED.**
+> No agent, script, or sync operation may change it. Only the site owner (Kaushik Jagani) can authorize changes.
+
 ---
 
 ## Project Overview
@@ -418,9 +422,9 @@ node -e "JSON.parse(require('fs').readFileSync('data/posts.json','utf8')); conso
 
 | # | Issue | File(s) | Fix Applied |
 |---|-------|---------|-------------|
-| 1 | `html` missing `overflow-x: hidden` — iOS Safari ignores it on `body` alone | `style.css` | Added `overflow-x: hidden` to `html` element |
+| 1 | `html` missing `overflow-x: hidden` ï¿½ iOS Safari ignores it on `body` alone | `style.css` | Added `overflow-x: hidden` to `html` element |
 | 2 | Long URLs/words in post content cause horizontal overflow | `style.css` | Added `overflow-wrap: break-word; word-break: break-word` to `.post-content` |
-| 3 | Headings with long text overflow on mobile | `style.css` | Added `overflow-wrap: break-word; word-break: break-word` to all `h1–h6` |
+| 3 | Headings with long text overflow on mobile | `style.css` | Added `overflow-wrap: break-word; word-break: break-word` to all `h1ï¿½h6` |
 | 4 | Paragraphs with long unbroken text cause overflow | `style.css` | Added `overflow-wrap: break-word; word-break: break-word` to `p` elements |
 | 5 | `.news-card-image-wrapper` fixed 240px overflows small screens | `style.css` | Added `max-width: 100%` |
 | 6 | `.blog-feed-card-image` fixed 240px overflows small screens | `style.css` | Added `max-width: 100%` |
@@ -431,5 +435,5 @@ node -e "JSON.parse(require('fs').readFileSync('data/posts.json','utf8')); conso
 | 11 | Missing global overflow containment | `responsive.css` | Added `max-width: 100%; width: 100%` to `html, body` |
 
 ### CSS Files Modified
-- `src/styles/style.css` — overflow-wrap on typography, max-width on fixed-width elements, minmax on grid columns
-- `src/styles/responsive.css` — global overflow prevention rules, min-width: 0 for flex/grid children, tablet grid fixes
+- `src/styles/style.css` ï¿½ overflow-wrap on typography, max-width on fixed-width elements, minmax on grid columns
+- `src/styles/responsive.css` ï¿½ global overflow prevention rules, min-width: 0 for flex/grid children, tablet grid fixes
