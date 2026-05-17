@@ -220,21 +220,24 @@ export function postUrl(slug: string): string {
   return `/blog/${slug}/`;
 }
 
-export function resolveImageUrl(image: string): string {
+export function resolveImageUrl(image: string, targetWidth: number = 800): string {
   if (!image) return '';
   if (image.startsWith('http://') || image.startsWith('https://')) {
     try {
       const url = new URL(image);
-      if (url.hostname === 'images.pexels.com' && !url.searchParams.has('w')) {
+      if (url.hostname === 'images.pexels.com') {
         url.searchParams.set('auto', 'compress');
         url.searchParams.set('cs', 'tinysrgb');
-        url.searchParams.set('w', '800');
+        url.searchParams.set('w', String(targetWidth));
+        url.searchParams.set('dpr', '1');
+        // Remove old static w param if present so we always control it
         return url.toString();
       }
-      if (url.hostname === 'images.unsplash.com' && !url.searchParams.has('w')) {
-        url.searchParams.set('w', '800');
-        url.searchParams.set('q', '75');
-        url.searchParams.set('auto', 'format');
+      if (url.hostname === 'images.unsplash.com') {
+        url.searchParams.set('w', String(targetWidth));
+        url.searchParams.set('q', '70');
+        url.searchParams.set('fm', 'webp');
+        url.searchParams.set('fit', 'crop');
         return url.toString();
       }
     } catch { /* invalid URL, return as-is */ }

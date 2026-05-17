@@ -13,7 +13,14 @@ const href = postUrl(post.slug);
 ---
 
 <a href={href} class="hero-main-card">
-    <img src={resolveImageUrl(post.image)} alt={post.title} fetchpriority="high" decoding="async">
+    <img
+        src={resolveImageUrl(post.image, 900)}
+        srcset={`${resolveImageUrl(post.image, 480)} 480w, ${resolveImageUrl(post.image, 900)} 900w`}
+        sizes="(max-width: 640px) 480px, 900px"
+        alt={post.title}
+        width="900" height="506"
+        fetchpriority="high"
+        decoding="async">
     <div class="hero-main-overlay">
         <span class="hero-category-badge">{capitalizeWords(category)}</span>
         <h2>{post.title}</h2>

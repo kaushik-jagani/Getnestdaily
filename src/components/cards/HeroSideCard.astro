@@ -13,7 +13,7 @@ const href = postUrl(post.slug);
 
 <a href={href} class="hero-side-card">
     <div class="hero-side-card-image">
-        <img src={resolveImageUrl(post.image)} alt={post.title} loading="lazy" decoding="async">
+        <img src={resolveImageUrl(post.image, 220)} alt={post.title} width="220" height="138" loading="lazy" decoding="async">
     </div>
     <div class="hero-side-card-content">
         <span class="hero-category-badge">{capitalizeWords(category)}</span>

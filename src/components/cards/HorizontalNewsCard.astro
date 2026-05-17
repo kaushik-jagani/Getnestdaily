@@ -15,7 +15,7 @@ const href = postUrl(post.slug);
 
 <div class={isFullWidth ? 'news-card-full' : 'news-card-horizontal'} data-post-url={href}>
     <div class="news-card-image-wrapper">
-        <img src={resolveImageUrl(post.image)} alt={post.title} loading="lazy" decoding="async">
+        <img src={resolveImageUrl(post.image, 480)} alt={post.title} width="480" height="300" loading="lazy" decoding="async">
     </div>
     <div class="news-card-content">
         <div class="news-card-meta-top">

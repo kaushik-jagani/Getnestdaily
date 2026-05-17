@@ -13,7 +13,7 @@ const categories = getPostCategories(post);
 ---
 
 <div class="blog-card" data-post-url={href}>
-    <img src={resolveImageUrl(post.image)} alt={post.title} class="blog-card-image" loading="lazy" decoding="async">
+    <img src={resolveImageUrl(post.image, 600)} alt={post.title} class="blog-card-image" width="600" height="375" loading="lazy" decoding="async">
     <div class="blog-card-content">
         <div class="blog-card-categories">
             {categories.map(category => (
