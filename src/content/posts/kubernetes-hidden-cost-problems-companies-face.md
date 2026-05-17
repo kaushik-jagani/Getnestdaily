@@ -1,7 +1,7 @@
----
+﻿---
 id: "kubernetes-hidden-cost-problems-companies-face"
 title: "Why Your Kubernetes Bill Keeps Growing — and How to Stop It"
-category: "cloud-computing"
+category: "technology"
 date: "2026-05-16"
 author: "Kaushik Jagani"
 image: "assets/images/posts/kubernetes-hidden-cost-problems-companies-face/featured.jpg"

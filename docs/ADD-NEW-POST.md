@@ -116,7 +116,7 @@ keywords:
 
 ## Valid Categories
 
-These are the ONLY allowed category values:
+These are the ONLY allowed category values. **Always use the exact slug below — no display names, no capital letters, no spaces.**
 
 | Category Slug | Display Name |
 |---------------|-------------|
@@ -128,7 +128,9 @@ These are the ONLY allowed category values:
 | `business-and-industry` | Business & Industry |
 | `energy-market-trends` | Energy Market Trends |
 
-> **?? DO NOT invent new categories.** If content doesn't fit, use the closest match.
+> **DO NOT invent new categories.** If content doesn't fit, use the closest match.
+> **DO NOT use display names** like `"Artificial Intelligence"` — always use the slug `"artificial-intelligence"`.
+> `cloud-computing` is **not a valid category** — use `technology` instead.
 > The poc-2 publisher and this site share the same category list.
 
 ---

@@ -1,7 +1,7 @@
----
+﻿---
 id: "11"
 title: "OPEC Explained in 2026: Why It Still Controls Oil Prices Despite Losing Power"
-category: "Energy Market Trends"
+category: "energy-market-trends"
 date: "2026-04-29"
 author: "Kaushik Jagani"
 image: "assets/images/posts/opec-2026-explained-oil-prices-usa-impact/featured.svg"
