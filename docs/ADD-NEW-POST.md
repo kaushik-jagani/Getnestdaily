@@ -114,9 +114,37 @@ keywords:
 
 ---
 
-## Valid Categories
+## Categories — Fully Dynamic, No Fixed List
 
-These are the ONLY allowed category values. **Always use the exact slug below — no display names, no capital letters, no spaces.**
+> **Categories are read directly from the `.md` post files at build time. There is no hardcoded list — any value you put in `category:` automatically becomes a live category page.**
+
+### How It Works
+
+- `getAllCategories()` in `src/lib/posts.ts` scans all posts and collects every unique `category` value
+- `src/pages/pages/category/[slug].astro` auto-generates one page per category found — no scripts needed, no manual step
+- The display name is auto-formatted: `"mechanical-engineering"` → `"Mechanical Engineering"`
+- The category URL is auto-generated: `"mechanical-engineering"` → `/pages/category/mechanical-engineering/`
+
+### The ONE Rule — Use Lowercase Kebab-Case Slugs
+
+**Always write the category as a lowercase kebab-case slug.** The system will display it correctly everywhere.
+
+```yaml
+# ✅ CORRECT
+category: "artificial-intelligence"
+category: "mechanical-engineering"
+category: "travel"
+category: "my-brand-new-topic"   # This auto-creates a new category page on next build
+
+# ❌ WRONG — display names cause duplicate categories in the sidebar
+category: "Artificial Intelligence"
+category: "Mechanical Engineering"
+category: "Travel"
+```
+
+### Currently Used Categories (reference only — not a restriction)
+
+These exist today based on current posts. You may add any new slug you need:
 
 | Category Slug | Display Name |
 |---------------|-------------|
@@ -127,11 +155,6 @@ These are the ONLY allowed category values. **Always use the exact slug below �
 | `productivity` | Productivity |
 | `business-and-industry` | Business & Industry |
 | `energy-market-trends` | Energy Market Trends |
-
-> **DO NOT invent new categories.** If content doesn't fit, use the closest match.
-> **DO NOT use display names** like `"Artificial Intelligence"` — always use the slug `"artificial-intelligence"`.
-> `cloud-computing` is **not a valid category** — use `technology` instead.
-> The poc-2 publisher and this site share the same category list.
 
 ---
 
