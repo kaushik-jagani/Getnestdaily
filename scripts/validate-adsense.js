@@ -1,4 +1,4 @@
-﻿/**
+/**
  * TrendBriefly — AdSense Compliance Validator
  * 
  * Usage: node scripts/validate-adsense.js

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * TrendBriefly — New Post Generator
  * 
  * Usage: node scripts/new-post.js "my-post-slug"
