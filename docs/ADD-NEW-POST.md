@@ -7,7 +7,64 @@
 > **`G-8H8J4V3ZWY` in `src/layouts/BaseLayout.astro` must NEVER be changed by any agent or sync operation.** Only the site owner (Kaushik Jagani) can authorize changes.
 
 ---
+## STRICT ENCODING CHECK — MANDATORY FOR EVERY NEW POST
 
+> **Every agent and author MUST run this check before and after adding any new post or file.**
+> Zero tolerance: do NOT merge or publish any file that fails this check.
+
+### What to Check
+
+| Issue | Description | Unicode |
+|-------|-------------|---------|
+| UTF-8 BOM | Invisible marker at file start (EF BB BF bytes) | U+FEFF |
+| Non-Breaking Space | Looks like a space but breaks parsing | U+00A0 |
+| Zero-Width Space | Invisible character that corrupts text | U+200B |
+| Smart Quotes | Curly quotes instead of straight quotes in code/frontmatter | U+2018/19/1C/1D |
+| Mojibake | Garbled text like `â€™` `Ã©` from wrong encoding | — |
+
+### How to Run the Check (PowerShell)
+
+Run this from the project root before committing any new post:
+
+```powershell
+# Check for BOM, NBSP, Zero-Width Space in all source files
+Get-ChildItem -Recurse -Include "*.md","*.astro","*.ts","*.js","*.json","*.css","*.mjs" |
+  Where-Object { $_.FullName -notmatch "node_modules|dist\\" } |
+  ForEach-Object {
+    try {
+      $bytes = [System.IO.File]::ReadAllBytes($_.FullName)
+      $issues = @()
+      if ($bytes.Length -ge 3 -and $bytes[0] -eq 239 -and $bytes[1] -eq 187 -and $bytes[2] -eq 191) { $issues += "BOM" }
+      $text = [System.Text.Encoding]::UTF8.GetString($bytes)
+      if ($text.Contains([char]0x00A0)) { $issues += "NBSP" }
+      if ($text.Contains([char]0x200B)) { $issues += "ZeroWidthSpace" }
+      if ($text.Contains([char]0xFEFF)) { $issues += "BOM-inline" }
+      if ($issues.Count -gt 0) { Write-Host "ENCODING ISSUE [$($issues -join ', ')]: $($_.FullName)" }
+    } catch {}
+  }
+```
+
+**Expected output:** No output means all files are clean.
+If any file is listed, fix it before proceeding.
+
+### How to Fix BOM
+
+```powershell
+# Remove BOM from a specific file
+$f = "path\to\file.md"
+$bytes = [System.IO.File]::ReadAllBytes($f)
+[System.IO.File]::WriteAllBytes($f, $bytes[3..($bytes.Length-1)])
+```
+
+### Rules for New Posts
+
+- [ ] Save all new `.md` post files as **UTF-8 without BOM**
+- [ ] Do NOT copy-paste content from Word, Google Docs, or PDF without sanitizing — these add smart quotes, NBSP, and hidden characters
+- [ ] Use only straight quotes `"` and `'` in frontmatter YAML
+- [ ] Use HTML entities (`&mdash;` `&rsquo;` `&ldquo;` `&rdquo;`) inside post body instead of raw Unicode special characters
+- [ ] Run the PowerShell check above after adding each new post — zero issues allowed
+
+---
 ## File Location
 
 Posts live at: `src/content/posts/{slug}.md`
