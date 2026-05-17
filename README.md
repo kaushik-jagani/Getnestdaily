@@ -1,4 +1,4 @@
-# TrendBriefly - A Modern, SEO-Optimized Blogging Platform
+ï»¿# TrendBriefly - A Modern, SEO-Optimized Blogging Platform
 
 ![TrendBriefly](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -34,25 +34,25 @@ A lightweight, production-ready blogging platform built with vanilla HTML, CSS, 
 ```
 project-root/
 +-- assets/
-¦   +-- images/          # Blog post images
-¦   +-- icons/           # Favicon and icons
-¦   +-- fonts/           # Custom fonts
+â—†   +-- images/          # Blog post images
+â—†   +-- icons/           # Favicon and icons
+â—†   +-- fonts/           # Custom fonts
 +-- css/
-¦   +-- variables.css    # CSS variables and base styles
-¦   +-- style.css        # General styles
-¦   +-- responsive.css   # Mobile responsive styles
+â—†   +-- variables.css    # CSS variables and base styles
+â—†   +-- style.css        # General styles
+â—†   +-- responsive.css   # Mobile responsive styles
 +-- js/
-¦   +-- main.js          # Main application logic
-¦   +-- router.js        # Client-side routing
-¦   +-- analytics.js     # Google Analytics integration
+â—†   +-- main.js          # Main application logic
+â—†   +-- router.js        # Client-side routing
+â—†   +-- analytics.js     # Google Analytics integration
 +-- data/
-¦   +-- posts.json       # Blog posts database
+â—†   +-- posts.json       # Blog posts database
 +-- pages/
-¦   +-- blog        # Blog listing page
-¦   +-- post        # Single post page
-¦   +-- category    # Category page
-¦   +-- about       # About page
-¦   +-- contact     # Contact page
+â—†   +-- blog        # Blog listing page
+â—†   +-- post        # Single post page
+â—†   +-- category    # Category page
+â—†   +-- about       # About page
+â—†   +-- contact     # Contact page
 +-- index.html           # Homepage
 +-- sitemap.xml          # SEO sitemap
 +-- robots.txt           # Search engine rules

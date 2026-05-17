@@ -1,4 +1,4 @@
-# TrendBriefly � Agent Instructions
+﻿# TrendBriefly ◆ Agent Instructions
 
 > **READ THIS FIRST before making ANY changes to this project.**
 
@@ -18,15 +18,15 @@
 
 | Document | Purpose | When to Read |
 |----------|---------|--------------|
-| `docs/ADD-NEW-POST.md` | **How to create posts** � frontmatter schema, image rules, SEO requirements, common mistakes | Before creating or editing ANY post |
-| `docs/BRAND-CONFIG.md` | **All brand-specific values** � categories, authors, analytics IDs, SEO defaults | Before making brand/config decisions |
-| `docs/THEME-CUSTOMIZATION.md` | **What to change when copying theme** � brand vs reusable files | When setting up for a new site |
-| `docs/SYNC-GUIDE.md` | **How to sync features between projects** � never copy whole files, apply surgically | Before porting features from another project |
+| `docs/ADD-NEW-POST.md` | **How to create posts** ◆ frontmatter schema, image rules, SEO requirements, common mistakes | Before creating or editing ANY post |
+| `docs/BRAND-CONFIG.md` | **All brand-specific values** ◆ categories, authors, analytics IDs, SEO defaults | Before making brand/config decisions |
+| `docs/THEME-CUSTOMIZATION.md` | **What to change when copying theme** ◆ brand vs reusable files | When setting up for a new site |
+| `docs/SYNC-GUIDE.md` | **How to sync features between projects** ◆ never copy whole files, apply surgically | Before porting features from another project |
 | `docs/ADSENSE-RULES.md` | Content policy compliance rules | Before writing content |
 
 ---
 
-## ?? ABSOLUTE PROHIBITION � Google Analytics ID
+## ?? ABSOLUTE PROHIBITION ◆ Google Analytics ID
 
 > **THIS RULE APPLIES TO ALL AGENTS, CODING ASSISTANTS, AI TOOLS, AND AUTOMATED SCRIPTS.**
 
@@ -34,13 +34,13 @@
 
 ```
 GOOGLE ANALYTICS ID: G-8H8J4V3ZWY
-STATUS: READ-ONLY � NEVER MODIFY
+STATUS: READ-ONLY ◆ NEVER MODIFY
 ```
 
-### Rules � No Exceptions
+### Rules ◆ No Exceptions
 
 - ? **NEVER change, replace, or remove `G-8H8J4V3ZWY`** for any reason
-- ? **NEVER overwrite it when syncing from another project** � the source project's GA ID must NOT replace this one
+- ? **NEVER overwrite it when syncing from another project** ◆ the source project's GA ID must NOT replace this one
 - ? **NEVER use it as a "template" or "placeholder"** and swap it with a different ID
 - ? **NEVER modify it even if the source project has a "newer" or "better" setup**
 - ? **NEVER modify the GA script block in `src/layouts/BaseLayout.astro`** without explicit written owner permission
@@ -54,14 +54,14 @@ STATUS: READ-ONLY � NEVER MODIFY
 
 ### Image Paths
 ```yaml
-# ? CORRECT � relative path (for self-hosted images)
+# ? CORRECT ◆ relative path (for self-hosted images)
 image: "assets/images/posts/{slug}/featured.jpg"
 
-# ? CORRECT � full URL (for external/CDN images)
+# ? CORRECT ◆ full URL (for external/CDN images)
 image: "https://cdn.example.com/image.jpg"
 image: "https://images.unsplash.com/photo-123..."
 
-# ? WRONG � leading slash (breaks OG meta resolution)
+# ? WRONG ◆ leading slash (breaks OG meta resolution)
 image: "/assets/images/posts/..."
 ```
 
@@ -71,16 +71,16 @@ image: "/assets/images/posts/..."
 `technology` | `artificial-intelligence` | `software` | `gadgets` | `productivity` | `business-and-industry` | `energy-market-trends`
 
 ### SEO Requirements (Every Post)
-- `title`: 50�65 characters with primary keyword
-- `meta_description`: 150�160 characters, never empty
-- `keywords`: 5�10 items, never empty
-- `reading_time`: `"X min"` format (words � 200)
+- `title`: 50◆65 characters with primary keyword
+- `meta_description`: 150◆160 characters, never empty
+- `keywords`: 5◆10 items, never empty
+- `reading_time`: `"X min"` format (words ◆ 200)
 - Content: minimum 1000 words, 5+ `<h2>` sections
 - Internal links: 2+ links to other posts (trailing slash required)
 
 ### Authors
-- `Kaushik Jagani` � primary author
-- `Global Info Nest Team` � team articles
+- `Kaushik Jagani` ◆ primary author
+- `Global Info Nest Team` ◆ team articles
 
 ---
 
@@ -113,7 +113,7 @@ public/
 ## Build & Deploy
 
 ```bash
-npm run build     # Builds to dist/client/ � Cloudflare deploys automatically
+npm run build     # Builds to dist/client/ ◆ Cloudflare deploys automatically
 npm run dev       # Local dev server at localhost:4321
 ```
 
