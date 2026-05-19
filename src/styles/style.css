@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
     MAIN STYLES - TrendBriefly
    ============================================ */
 
@@ -1647,6 +1647,33 @@ li {
     color: var(--accent);
 }
 
+/* ============================================
+   SOCIAL LINKS (FOOTER)
+   ============================================ */
+
+.footer-social {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-social a:hover {
+    color: var(--accent);
+}
 .footer-bottom {
     border-top: 1px solid var(--border);
     padding-top: var(--space-6);
