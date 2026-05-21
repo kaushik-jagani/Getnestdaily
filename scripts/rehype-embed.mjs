@@ -44,26 +44,38 @@ function buildEmbed(url, type) {
   if (type === 'youtube') {
     const vid = getYouTubeId(url);
     if (!vid) return null;
+    const thumb = `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`;
+    const embedUrl = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0`;
+    // Thumbnail facade: shows thumbnail + play button.
+    // On click (handled by client-side script), replaces with iframe.
+    // Falls back to opening YouTube if embedding is disabled.
     return {
       ...common,
       tagName: 'div',
       children: [{
         type: 'element',
         tagName: 'div',
-        properties: { className: ['embed-iframe-wrap'] },
-        children: [{
-          type: 'element',
-          tagName: 'iframe',
-          properties: {
-            src: `https://www.youtube.com/embed/${vid}`,
-            title: 'YouTube video',
-            frameBorder: '0',
-            allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
-            allowFullscreen: true,
-            loading: 'lazy',
+        properties: {
+          className: ['yt-facade'],
+          'data-vid': vid,
+          'data-embed': embedUrl,
+          'data-watch': url,
+          role: 'button',
+          tabIndex: '0',
+          'aria-label': 'Play YouTube video',
+          style: `background-image:url('${thumb}')`,
+        },
+        children: [
+          {
+            type: 'element',
+            tagName: 'div',
+            properties: { className: ['yt-play-btn'], 'aria-hidden': 'true' },
+            children: [{
+              type: 'raw',
+              value: '<svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C0 13.05 0 24 0 24s0 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C68 34.95 68 24 68 24s0-10.95-1.48-16.26z" fill="#FF0000"/><path d="M45 24 27 14v20" fill="#fff"/></svg>',
+            }],
           },
-          children: [],
-        }],
+        ],
       }],
     };
   }

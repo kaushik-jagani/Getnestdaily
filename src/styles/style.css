@@ -1405,6 +1405,45 @@ li {
     border: none;
 }
 
+/* YouTube thumbnail facade (click-to-play) */
+.yt-facade {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #000 center/cover no-repeat;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+}
+.yt-facade::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.15);
+    transition: background .2s;
+}
+.yt-facade:hover::after { background: rgba(0,0,0,.05); }
+.yt-play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 68px; height: 48px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.5));
+    transition: transform .15s;
+}
+.yt-facade:hover .yt-play-btn { transform: translate(-50%, -50%) scale(1.1); }
+.yt-play-btn svg { width: 68px; height: 48px; }
+.yt-facade.yt-loaded {
+    padding-bottom: 56.25%;
+}
+.yt-facade.yt-loaded iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+}
+
 /* Twitter/Reddit blockquote wrapper */
 .embed-twitter,
 .embed-reddit {

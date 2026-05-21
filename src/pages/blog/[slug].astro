@@ -244,4 +244,30 @@ const breadcrumbSchema = {
     }
 
     <!-- Share Buttons scripts -->
+    <script is:inline>
+      // YouTube facade: click thumbnail → try iframe embed, fallback to YouTube tab
+      document.querySelectorAll('.yt-facade').forEach(function(facade) {
+        function activate() {
+          var embedUrl = facade.dataset.embed;
+          var watchUrl = facade.dataset.watch;
+          var iframe = document.createElement('iframe');
+          iframe.src = embedUrl;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+          iframe.title = 'YouTube video';
+          // Test if embed works; if iframe errors, open in new tab
+          iframe.addEventListener('error', function() {
+            window.open(watchUrl, '_blank', 'noopener');
+          });
+          facade.classList.add('yt-loaded');
+          facade.innerHTML = '';
+          facade.appendChild(iframe);
+          facade.removeEventListener('click', activate);
+          facade.removeEventListener('keydown', onKey);
+        }
+        function onKey(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } }
+        facade.addEventListener('click', activate);
+        facade.addEventListener('keydown', onKey);
+      });
+    </script>
 </BaseLayout>
