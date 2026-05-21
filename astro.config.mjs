@@ -4,6 +4,8 @@ import sitemap from '@astrojs/sitemap';
 
 import cloudflare from '@astrojs/cloudflare';
 import rehypeTableWrap from './scripts/rehype-table-wrap.mjs';
+import rehypeEmbed from './scripts/rehype-embed.mjs';
+import rehypeEmbed from './scripts/rehype-embed.mjs';
 
 export default defineConfig({
   site: 'https://getnestdaily.xyz',
@@ -18,7 +20,7 @@ export default defineConfig({
 
   integrations: [sitemap()],
   markdown: {
-    rehypePlugins: [rehypeTableWrap],
+    rehypePlugins: [rehypeTableWrap, rehypeEmbed],
   },
   adapter: cloudflare()
 });
