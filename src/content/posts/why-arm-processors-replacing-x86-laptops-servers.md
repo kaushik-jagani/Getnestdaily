@@ -55,7 +55,7 @@ ARM (originally Acorn RISC Machine, now Advanced RISC Machines) is an instructio
 
 [ARM Holdings](https://www.arm.com/) (owned by SoftBank, IPO'd on NASDAQ in 2023) does not manufacture chips. They license the ISA and reference core designs (Cortex-A, Cortex-X series) to chip designers who build custom implementations. Apple licenses only the ISA and designs entirely custom cores (Avalanche/Blizzard in M1, Everest/Sawtooth in M3-M4). Qualcomm acquired Nuvia and designed custom Oryon cores for Snapdragon X. AWS designs custom Graviton cores (Neoverse V2-based). This licensing model means ARM's ecosystem has diverse implementations optimized for different use cases — from 0.5W IoT sensors to 350W server chips.
 
-![Alt text: Diagram comparing ARM RISC fixed-width instruction decode pipeline versus x86 CISC variable-length instruction decode with micro-op translation layer](assets/images/posts/why-arm-processors-replacing-x86-laptops-servers/section-1.jpg)
+![Alt text: Diagram comparing ARM RISC fixed-width instruction decode pipeline versus x86 CISC variable-length instruction decode with micro-op translation layer](/assets/images/posts/why-arm-processors-replacing-x86-laptops-servers/section-1.jpg)
 
 The competitive dynamic has shifted because of three converging factors. First, TSMC's process leadership (3nm, approaching 2nm) benefits ARM designs disproportionately because their simpler decode logic scales better at advanced nodes. Second, Apple proved that ARM can match or exceed x86 in absolute performance (not just perf/watt) — the M4 Max matches AMD Ryzen 9 9950X in multi-threaded workloads while consuming 60% less power. Third, software ecosystem compatibility reached a tipping point: Windows on ARM now runs x86 applications through Prism emulation with less than 15% performance penalty, and Linux/Docker containers are architecture-agnostic, making cloud migration trivial.
 
@@ -136,7 +136,7 @@ ARM's software ecosystem maturity varies by platform:
 | Perf-per-watt (GB6 MC/W) | 750 | 748 | 360 | 393 | ~750 |
 | Battery life (web browsing) | 20 hrs | 18 hrs | 10 hrs | 12 hrs | N/A |
 
-![Alt text: Performance-per-watt comparison chart showing ARM processors delivering 2x the compute per watt versus x86 across different workload types](assets/images/posts/why-arm-processors-replacing-x86-laptops-servers/section-2.jpg)
+![Alt text: Performance-per-watt comparison chart showing ARM processors delivering 2x the compute per watt versus x86 across different workload types](/assets/images/posts/why-arm-processors-replacing-x86-laptops-servers/section-2.jpg)
 
 The benchmark data confirms the pattern: ARM processors match or exceed x86 in absolute performance for single-threaded and moderately parallel workloads, while consuming 40-60% less power. The x86 advantage narrows to heavily multi-threaded workloads where Intel and AMD's higher core counts (up to 24 P-cores) and higher sustained power budgets (65-125W laptop, 350W server) provide brute-force throughput. For the workloads that define laptop usage (web browsing, document editing, code compilation, video conferencing): ARM wins on both performance and efficiency.
 
@@ -226,7 +226,7 @@ Intel faces an existential challenge. Its foundry business (Intel Foundry) is bl
 | 5 years | ARM (including Apple Silicon) represents 40%+ of PC market | Medium | x86 PC monopoly permanently broken |
 | 5 years | x86 persists in gaming/HPC niches but loses mainstream volume | High | Similar trajectory to PowerPC (alive but niche) |
 
-![Alt text: Timeline infographic showing ARM processor market share growth from 2020 to projected 2030 across laptop, server, and desktop segments](assets/images/posts/why-arm-processors-replacing-x86-laptops-servers/section-2.jpg)
+![Alt text: Timeline infographic showing ARM processor market share growth from 2020 to projected 2030 across laptop, server, and desktop segments](/assets/images/posts/why-arm-processors-replacing-x86-laptops-servers/section-2.jpg)
 
 ## Getting Started
 

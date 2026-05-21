@@ -58,7 +58,7 @@ AI code assistants are software tools that use large language models (LLMs) trai
 
 The underlying technology is transformer-based LLMs specifically trained or fine-tuned on source code. [GitHub Copilot](https://github.com/features/copilot) uses OpenAI Codex descendants (GPT-4-turbo family); [Cursor](https://cursor.sh) integrates Claude 3.5 Sonnet (Anthropic) and GPT-4o; [Codeium](https://codeium.com) trains proprietary models; [Amazon Q Developer (CodeWhisperer)](https://aws.amazon.com/codewhisperer/) uses Amazon's internal models trained on permissively-licensed code. The differentiator between products is not raw model capability — it is context engineering: how much of your codebase, repository structure, open files, terminal output, and documentation each tool feeds into the model's context window to produce relevant suggestions.
 
-![Alt text: Architecture diagram showing AI code assistant data flow from IDE context through language model inference to suggestion rendering in editor](assets/images/posts/how-ai-code-assistants-reshaping-development/section-1.jpg)
+![Alt text: Architecture diagram showing AI code assistant data flow from IDE context through language model inference to suggestion rendering in editor](/assets/images/posts/how-ai-code-assistants-reshaping-development/section-1.jpg)
 
 The market has evolved through three generations. Generation 1 (2021-2022): single-line completions, limited context, high hallucination rates. Generation 2 (2023-2024): multi-line generation, repository-aware context, chat interfaces. Generation 3 (2025-present): agentic workflows executing multi-step tasks across files, terminal commands, and test execution — approaching autonomous developer agents rather than suggestion engines.
 
@@ -127,7 +127,7 @@ Cursor Composer and Copilot Workspace represent the agentic frontier — multi-s
 
 The pattern is clear: AI assistants provide highest leverage on repetitive/boilerplate tasks and lowest leverage on architectural thinking. For complex algorithmic work, the model sometimes produces correct solutions but more often provides a starting point that requires significant human correction.
 
-![Alt text: Bar chart comparing developer task completion time across different workflow categories with and without AI code assistants](assets/images/posts/how-ai-code-assistants-reshaping-development/section-2.jpg)
+![Alt text: Bar chart comparing developer task completion time across different workflow categories with and without AI code assistants](/assets/images/posts/how-ai-code-assistants-reshaping-development/section-2.jpg)
 
 ## Pricing and Economics
 
