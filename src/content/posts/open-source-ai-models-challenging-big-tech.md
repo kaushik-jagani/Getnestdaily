@@ -31,6 +31,7 @@ keywords:
   - "AI cost comparison open closed"
   - "enterprise open source AI"
 ---
+
 # Why Open-Source AI Models Are Rewriting the Rules of the Entire AI Industry: The Shift Big Tech Cannot Ignore
 
 Meta released Llama 4 — open-weight large language models matching or exceeding GPT-4o performance on standard benchmarks across reasoning, coding, and multilingual tasks. Free to download, run on your infrastructure, fine-tune on proprietary data, and deploy commercially without per-token charges. For organizations processing millions of AI requests daily, this represents a shift from $50,000–$500,000 monthly API costs to fixed infrastructure with zero marginal cost per query.
@@ -118,7 +119,7 @@ For closed AI providers: the moat is narrowing to frontier reasoning capability,
 
 **Myth: Data sent to APIs is safe.** While providers claim not to train on API data, the data still traverses external infrastructure. On-premise deployment eliminates this risk entirely.
 
-https://www.youtube.com/watch?v=Nw6LkGbB6sI
+https://youtu.be/Xn-gtHDsaPY?si=lGBWxJRBOqykfaRA
 
 Discussion on how enterprises are building internal ML platforms around open models:
 
