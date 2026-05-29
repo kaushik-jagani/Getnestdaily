@@ -2,9 +2,7 @@ import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 
-import cloudflare from '@astrojs/cloudflare';
 import rehypeTableWrap from './scripts/rehype-table-wrap.mjs';
-import rehypeEmbed from './scripts/rehype-embed.mjs';
 import rehypeEmbed from './scripts/rehype-embed.mjs';
 
 export default defineConfig({
@@ -22,5 +20,4 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeTableWrap, rehypeEmbed],
   },
-  adapter: cloudflare()
 });
