@@ -141,3 +141,5 @@ k8s/
 !public/
 !data/
 !.env.example
+
+.wrangler/
