@@ -22,7 +22,9 @@ function isActive(href: string): boolean {
             <a href="/" class:list={["nav-link", { active: isActive('/') && !currentPath.includes('/pages/') && !currentPath.includes('/blog/') }]}>Home</a>
             <a href="/pages/blog/" class:list={["nav-link", { active: currentPath.includes('/pages/blog') || currentPath.includes('/blog/') }]}>Blog</a>
             <div class="nav-dropdown">
-                <a href="/pages/category/" class:list={["nav-link nav-dropdown-toggle", { active: currentPath.includes('/pages/category') }]}>Topics</a>
+                <button type="button" class:list={["nav-link nav-dropdown-toggle", { active: currentPath.includes('/pages/category') }]} aria-expanded="false" aria-haspopup="true">
+                    Topics <span class="dropdown-arrow" aria-hidden="true">▾</span>
+                </button>
                 <div class="nav-dropdown-menu">
                     <a href="/pages/category/technology/">Technology</a>
                     <a href="/pages/category/artificial-intelligence/">Artificial Intelligence</a>

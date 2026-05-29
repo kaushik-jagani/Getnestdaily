@@ -199,7 +199,22 @@ export function decodeHtmlEntities(str: string): string {
 
 export function getExcerpt(content: string, length = 120): string {
   if (!content) return '';
-  const text = decodeHtmlEntities(content.replace(/<[^>]*>/g, ''));
+  let text = content.replace(/<[^>]*>/g, '');
+  // Strip markdown headings (##, ###, etc.)
+  text = text.replace(/^#{1,6}\s+/gm, '');
+  // Strip bold/italic markers
+  text = text.replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1');
+  // Strip inline code
+  text = text.replace(/`+([^`]*)`+/g, '$1');
+  // Strip blockquotes
+  text = text.replace(/^>\s+/gm, '');
+  // Strip horizontal rules
+  text = text.replace(/^[-*_]{3,}\s*$/gm, '');
+  // Strip links, keep text
+  text = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+  // Collapse whitespace
+  text = text.replace(/\s+/g, ' ').trim();
+  text = decodeHtmlEntities(text);
   return text.substring(0, length) + '...';
 }
 

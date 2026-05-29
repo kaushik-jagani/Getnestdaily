@@ -1,4 +1,4 @@
-export default {
+﻿export default {
   async fetch(request) {
     const url = new URL(request.url);
 
@@ -26,7 +26,12 @@ export default {
       );
     }
 
-    // Normal request
-    return fetch(request);
+    // Fetch the response
+    const response = await fetch(request);
+
+    return response;
+  }
+
+    return response;
   }
 }

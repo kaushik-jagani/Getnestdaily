@@ -2,6 +2,7 @@
     MAIN STYLES - TrendBriefly
    ============================================ */
 
+
 /* ---- Reset ---- */
 *,
 *::before,
@@ -27,6 +28,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    padding-top: 64px;
     transition: background-color var(--transition-base), color var(--transition-base);
 }
 
@@ -124,8 +126,11 @@ li {
    ============================================ */
 
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: var(--z-sticky);
     background-color: var(--bg-navbar);
     border-bottom: 1px solid var(--border);
@@ -201,6 +206,10 @@ li {
     padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-sm);
     transition: color var(--transition-fast), background-color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    line-height: inherit;
 }
 
 .nav-dropdown-toggle:hover {
@@ -209,9 +218,18 @@ li {
 }
 
 .nav-dropdown-toggle::after {
-    content: ' ▾';
+    content: none;
+}
+
+.dropdown-arrow {
     font-size: 0.65em;
     opacity: 0.6;
+    transition: transform var(--transition-fast);
+}
+
+.nav-dropdown.active .dropdown-arrow,
+.nav-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
 }
 
 .nav-dropdown-menu {
@@ -771,6 +789,20 @@ li {
     color: var(--text-primary);
 }
 
+/* Categories grid in sidebar */
+.sidebar-categories-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+}
+
+/* Blog page sidebar categories (single column) */
+#blogSidebarCategories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
 .sidebar-news-card {
     display: flex;
     gap: var(--space-3);
@@ -820,25 +852,42 @@ li {
 .sidebar-category-link {
     display: flex;
     justify-content: space-between;
-    padding: var(--space-3) 0;
-    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     font-weight: 500;
     text-decoration: none;
-    transition: color var(--transition-fast);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+    gap: var(--space-2);
+    min-width: 0;
 }
 
 .sidebar-category-link:hover {
     color: var(--accent);
+    background-color: var(--accent-subtle);
+    border-color: var(--accent);
+}
+
+.sidebar-category-link span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
 }
 
 .sidebar-category-link .count {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    background: var(--bg-tertiary);
-    padding: 2px 6px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: var(--accent-subtle);
+    padding: 1px 6px;
     border-radius: var(--radius-full);
+    flex-shrink: 0;
+    line-height: 1.6;
 }
 
 /* ============================================
