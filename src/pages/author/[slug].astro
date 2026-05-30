@@ -11,7 +11,7 @@ import {
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const authors = getAllAuthors();
+    const authors = await getAllAuthors();
     const posts = await getAllPosts();
     return authors.map((author) => ({
         params: { slug: author.slug },

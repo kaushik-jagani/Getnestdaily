@@ -19,26 +19,90 @@ export interface Author {
   };
 }
 
-const authors: Author[] = authorsData as Author[];
+// Pool of 20 generic bios — auto-assigned to any new author by name hash
+const BIO_POOL: string[] = [
+  "A passionate writer exploring the intersection of technology, society, and human experience.",
+  "Covering emerging trends in tech, business, and culture with an eye for what matters most.",
+  "A technology journalist with a knack for breaking down complex ideas into clear, engaging stories.",
+  "Writer and analyst tracking the forces reshaping industries and everyday life.",
+  "Exploring the latest in digital innovation, AI, and the future of work.",
+  "A curious mind at the crossroads of science, technology, and culture.",
+  "Reporting on the ideas and people driving the next wave of technological change.",
+  "Tech writer focused on making sense of a fast-moving world for everyday readers.",
+  "Following the stories behind the startups, breakthroughs, and controversies shaping tomorrow.",
+  "An independent voice covering technology, policy, and the people caught between them.",
+  "Dedicated to unpacking complex technological shifts with clarity and depth.",
+  "Writer covering the business of technology and its impact on society at large.",
+  "Chronicling the rise of AI, robotics, and digital transformation across industries.",
+  "A storyteller who turns technical complexity into narratives anyone can understand.",
+  "Tracking breakthroughs in science and technology with a focus on real-world impact.",
+  "Journalist covering cybersecurity, privacy, and the digital rights of everyday users.",
+  "From cloud computing to consumer tech, covering the full spectrum of the digital age.",
+  "Writer passionate about the ethical and social dimensions of technological progress.",
+  "Covering hardware, software, and the humans who build and use them every day.",
+  "An analyst and writer focused on how technology is rewriting the rules of business and life.",
+];
 
-export function getAllAuthors(): Author[] {
-  return authors;
+function nameToSlug(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
-export function getAuthorBySlug(slug: string): Author | undefined {
-  return authors.find(a => a.slug === slug);
+function pickBio(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = (hash * 31 + name.charCodeAt(i)) & 0xffff;
+  }
+  return BIO_POOL[hash % BIO_POOL.length];
 }
 
-export function findAuthorByName(name: string): Author | undefined {
-  return authors.find(a => a.name.toLowerCase() === name.toLowerCase());
+function makeDynamicAuthor(name: string, index: number): Author {
+  return {
+    id: 1000 + index,
+    name,
+    slug: nameToSlug(name),
+    bio: pickBio(name),
+    avatar: '',
+    social: { facebook: '', instagram: '', reddit: '', linkedin: '' },
+  };
+}
+
+const staticAuthors: Author[] = authorsData as Author[];
+
+// Runtime cache of all authors (static + dynamic from posts)
+let _allAuthorsCache: Author[] | null = null;
+
+export async function getAllAuthors(): Promise<Author[]> {
+  if (_allAuthorsCache) return _allAuthorsCache;
+  const entries = await getCollection('posts');
+  const seen = new Set<string>(staticAuthors.map(a => a.name.toLowerCase()));
+  const dynamic: Author[] = [];
+  let idx = 0;
+  for (const entry of entries) {
+    const name: string = (entry.data as any).author || '';
+    if (!name || seen.has(name.toLowerCase())) continue;
+    seen.add(name.toLowerCase());
+    dynamic.push(makeDynamicAuthor(name, idx++));
+  }
+  _allAuthorsCache = [...staticAuthors, ...dynamic];
+  return _allAuthorsCache;
+}
+
+export async function getAuthorBySlug(slug: string): Promise<Author | undefined> {
+  const all = await getAllAuthors();
+  return all.find(a => a.slug === slug);
+}
+
+export async function findAuthorByName(name: string): Promise<Author | undefined> {
+  const all = await getAllAuthors();
+  return all.find(a => a.name.toLowerCase() === name.toLowerCase());
 }
 
 export function getAuthorUrl(author: Author): string {
   return `/author/${author.slug}/`;
 }
 
-export function getAuthorLink(authorName: string): string | null {
-  const author = findAuthorByName(authorName);
+export async function getAuthorLink(authorName: string): Promise<string | null> {
+  const author = await findAuthorByName(authorName);
   return author ? getAuthorUrl(author) : null;
 }
 
