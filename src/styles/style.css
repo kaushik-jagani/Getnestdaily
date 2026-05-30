@@ -968,6 +968,12 @@ li {
     margin-bottom: 0;
 }
 
+.featured-post-meta .blog-card-category,
+.post-meta .blog-card-category {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
 .blog-card-title {
     font-size: var(--heading-4);
     margin-bottom: var(--space-2);
