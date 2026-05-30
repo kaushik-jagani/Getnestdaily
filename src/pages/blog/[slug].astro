@@ -46,7 +46,7 @@ const tocItems = headings
     }));
 
 // Author bio from JSON
-const authorData = findAuthorByName(post.author);
+const authorData = await findAuthorByName(post.author);
 const authorBio =
     authorData?.bio || "Experienced writer and technology enthusiast.";
 const authorPageUrl = authorData ? getAuthorUrl(authorData) : null;
