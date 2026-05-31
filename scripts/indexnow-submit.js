@@ -9,9 +9,13 @@
  * Key file hosted at: https://getnestdaily.xyz/3ed052140c1d46fda13751477b44b040.txt
  */
 
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+import fs from 'fs';
+import path from 'path';
+import https from 'https';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const SITE = 'https://getnestdaily.xyz';
 const KEY = '3ed052140c1d46fda13751477b44b040';
@@ -81,7 +85,7 @@ async function main() {
 
         try {
             const res = await postJson('api.indexnow.org', '/IndexNow', payload);
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 202) {
                 console.log(`✓ Success (HTTP ${res.status}) — URLs accepted by IndexNow.`);
             } else {
                 console.error(`✗ HTTP ${res.status}: ${res.body}`);
