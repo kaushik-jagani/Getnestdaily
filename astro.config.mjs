@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 import rehypeTableWrap from './scripts/rehype-table-wrap.mjs';
 import rehypeEmbed from './scripts/rehype-embed.mjs';
+import { indexNowIntegration } from './scripts/indexnow-integration.mjs';
 
 export default defineConfig({
   site: 'https://getnestdaily.xyz',
@@ -16,7 +17,7 @@ export default defineConfig({
     format: 'directory'
   },
 
-  integrations: [sitemap()],
+  integrations: [sitemap(), indexNowIntegration()],
   markdown: {
     rehypePlugins: [rehypeTableWrap, rehypeEmbed],
   },
