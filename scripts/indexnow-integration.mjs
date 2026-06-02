@@ -1,21 +1,26 @@
 /**
  * Astro integration: auto-submit all post URLs to Bing IndexNow after every build.
- * Fires via the `astro:build:done` hook — runs automatically on every Cloudflare deployment.
+ * Reads posts from src/content/posts/ directly — reliable on Cloudflare Pages builds.
  *
  * Key:      3ed052140c1d46fda13751477b44b040
  * Key file: https://getnestdaily.xyz/3ed052140c1d46fda13751477b44b040.txt
  */
 
 import https from 'https';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const SITE       = 'https://getnestdaily.xyz';
-const HOST       = 'getnestdaily.xyz';
-const KEY        = '3ed052140c1d46fda13751477b44b040';
-const KEY_LOCATION = `${SITE}/${KEY}.txt`;
+export const INDEXNOW_CONFIG = {
+    site: 'https://getnestdaily.xyz',
+    host: 'getnestdaily.xyz',
+    key: '3ed052140c1d46fda13751477b44b040',
+};
+INDEXNOW_CONFIG.keyLocation = `${INDEXNOW_CONFIG.site}/${INDEXNOW_CONFIG.key}.txt`;
 
-function postJson(body) {
+export function submitToIndexNow(payload) {
     return new Promise((resolve, reject) => {
-        const data = JSON.stringify(body);
+        const data = JSON.stringify(payload);
         const req = https.request(
             {
                 hostname: 'api.indexnow.org',
@@ -42,36 +47,45 @@ export function indexNowIntegration() {
     return {
         name: 'indexnow-auto-submit',
         hooks: {
-            'astro:build:done': async ({ pages, logger }) => {
-                // Collect only /blog/* pages
-                const urls = pages
-                    .map(p => `${SITE}/${p.pathname}`.replace(/\/+/g, '/').replace('https:/', 'https://'))
-                    .filter(u => u.includes('/blog/') && !u.endsWith('/blog/'));
+            'astro:build:done': async ({ logger }) => {
+                const { site, host, key, keyLocation } = INDEXNOW_CONFIG;
+
+                if (!key || key === 'REPLACE_WITH_YOUR_KEY') {
+                    logger.info('[IndexNow] No key configured, skipping.');
+                    return;
+                }
+
+                // Read slugs directly from filesystem — pages[] can be empty on Cloudflare builds
+                const __dir = path.dirname(fileURLToPath(import.meta.url));
+                const postsDir = path.join(__dir, '..', 'src', 'content', 'posts');
+                let urls = [];
+                try {
+                    urls = fs.readdirSync(postsDir)
+                        .filter(f => f.endsWith('.md'))
+                        .map(f => `${site}/blog/${f.replace(/\.md$/, '')}/`);
+                } catch (e) {
+                    logger.warn(`[IndexNow] Cannot read posts dir: ${e.message}`);
+                    return;
+                }
 
                 if (urls.length === 0) {
-                    logger.info('[IndexNow] No blog URLs found, skipping submission.');
+                    logger.info('[IndexNow] No posts found, skipping.');
                     return;
                 }
 
                 logger.info(`[IndexNow] Submitting ${urls.length} URL(s) to Bing...`);
-
                 try {
-                    const res = await postJson({
-                        host: HOST,
-                        key: KEY,
-                        keyLocation: KEY_LOCATION,
-                        urlList: urls,
-                    });
-
+                    const res = await submitToIndexNow({ host, key, keyLocation, urlList: urls });
                     if (res.status === 200 || res.status === 202) {
-                        logger.info(`[IndexNow] ✓ Submitted successfully (HTTP ${res.status}).`);
+                        logger.info(`[IndexNow] ✓ Success (HTTP ${res.status}).`);
                     } else {
                         logger.warn(`[IndexNow] ✗ HTTP ${res.status}: ${res.body}`);
                     }
                 } catch (err) {
-                    logger.warn(`[IndexNow] ✗ Request failed: ${err.message}`);
+                    logger.warn(`[IndexNow] ✗ Failed: ${err.message}`);
                 }
             },
         },
     };
 }
+
